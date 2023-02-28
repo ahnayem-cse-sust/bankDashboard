@@ -22,15 +22,15 @@ class Section extends Component {
                 <Items />
                 <div className='row'>
                 <div className='col-md-12'>
-                    <BarChart />
+                    {/* <BarChart /> */}
                 </div>
                 </div>
                 <div className='row'>
                 <div className='col-md-6'>
-                    <Table />
+                    {/* <Table /> */}
                 </div>
                 <div className='col-md-6'>
-                    <LineChart />
+                    {/* <LineChart /> */}
                 </div>
                 </div>
             </div>
