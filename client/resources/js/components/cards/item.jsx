@@ -2,19 +2,19 @@ import React, { Component } from 'react';
 import axios from "axios";
 import Search from "../utils/search";
 
-const baseURL = "http://172.17.0.37/dashboard/";
+const baseURL = "http://172.17.0.37/dashboard/dashboard/";
 
 class Section extends Component {
 
     state = {
         
-      }
+      };
 
       componentDidMount() {
         var comp = this;
         axios({
             method: 'get',
-            url: baseURL+'dashboard/index',
+            url: baseURL+'index',
             responseType: 'stream'
           })
             .then(function (response) {
@@ -23,14 +23,18 @@ class Section extends Component {
               comp.setState({ data:d });
               console.log(comp.state);
             });
-      }
+      };
+
+      chooseBranch = (br_code) => {
+        console.log(br_code);
+      };
 
   render() {
 
     return (
         
             <div className="row">
-                <Search />
+                <Search chooseBranch={this.chooseBranch} />
                 <div className="col-12 col-sm-6 col-md-3">
                     <div className="info-box">
 
