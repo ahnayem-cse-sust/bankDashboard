@@ -1,3 +1,13 @@
 /* @import url("./materials/assets/css/material-dashboard.css"); */
 
 @import url("./fontawesome-free-6.3.0-web/css/all.min.css");
+
+.label-div-select{
+    padding-top: 6px;
+    padding-right: 4px;
+    text-align: right;
+    font-size: 15px;
+}
+.div-select{
+    padding-left: 0px;
+}
