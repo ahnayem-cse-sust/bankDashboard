@@ -3,7 +3,7 @@ import Select from 'react-select';
 import axios from "axios";
 
 
-const baseURL = "http://172.17.0.37/dashboard/";
+const baseURL = "http://172.17.0.37/dashboard/dashboard/";
 
 class Search extends Component {
 
@@ -11,21 +11,29 @@ class Search extends Component {
     super(props);
     this.state = {
       branchOptions : [
-        { value: 'chocolate', label: 'Chocolate' },
-        { value: 'strawberry', label: 'Strawberry' },
-        { value: 'vanilla', label: 'Vanilla' }
+        
       ]
     };
     }
 
     componentDidMount() {
-    var comp = this;
+      var comp = this;
+      axios({
+          method: 'get',
+          url: baseURL+'getBranches',
+          responseType: 'stream'
+        })
+          .then(function (response) {
+              const data = JSON.parse(response.data);
+            comp.setState({ branchOptions:data });
+            // console.log(data);
+          });
     
     }
 
-    logChange(val) {
-        console.log("Selected: " + val);
-      }
+    handleBranchChange = (selected) => {
+      this.props.chooseBranch(selected.value);
+    };
 
   render() {
 
@@ -50,6 +58,7 @@ class Search extends Component {
                       isClearable={true}
                       isSearchable={true}
                       options={this.state.branchOptions}
+                      onChange={this.handleBranchChange}
                     />
                   </div>
                 </div>
