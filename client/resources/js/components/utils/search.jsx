@@ -1,8 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component, useState  } from 'react';
 import Select from 'react-select';
 import axios from "axios";
 
-import 'react-select/dist/css/react-select.css';
 
 const baseURL = "http://172.17.0.37/dashboard/";
 
@@ -11,10 +10,11 @@ class Search extends Component {
     constructor(props) {
     super(props);
     this.state = {
-        options : [
-            { value: 'one', label: 'One' },
-            { value: 'two', label: 'Two' }
-          ]
+      branchOptions : [
+        { value: 'chocolate', label: 'Chocolate' },
+        { value: 'strawberry', label: 'Strawberry' },
+        { value: 'vanilla', label: 'Vanilla' }
+      ]
     };
     }
 
@@ -30,14 +30,47 @@ class Search extends Component {
   render() {
 
     return (
-        
+            
             <div className="row">
-                <Select
-                    name="form-field-name"
-                    value="one"
-                    options={options}
-                    onChange={logChange}
+              <br />
+              <div className='col-md-4'>
+
+              </div>
+              <div className='col-md-3'>
+                <div className='row'>
+                  <div className='col-sm-3 col-md-3 label-div-select'>
+                    <label>Brnach:</label>
+                  </div>
+                  <div className='col-md-9 col-sm-9 div-select'>
+                    <Select
+                      className="basic-single"
+                      classNamePrefix="select"
+                      isDisabled={false}
+                      isLoading={false}
+                      isClearable={true}
+                      isSearchable={true}
+                      options={this.state.branchOptions}
                     />
+                  </div>
+                </div>
+              </div>
+              <div className='col-md-2'>
+
+              </div>
+              <div className='col-md-3'>
+                {/* <Select
+                    className="basic-single"
+                    classNamePrefix="select"
+                    isDisabled={false}
+                    isLoading={false}
+                    isClearable={true}
+                    isSearchable={true}
+                    options={this.state.branchOptions}
+                  /> */}
+              </div>
+              <br />
+              <br />
+              <br />
             </div>
             
     );
