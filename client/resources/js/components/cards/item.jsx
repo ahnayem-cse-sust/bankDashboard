@@ -30,7 +30,7 @@ class Section extends Component {
     return (
         
             <div className="row">
-                <Search />
+                {/* <Search /> */}
                 <div className="col-12 col-sm-6 col-md-3">
                     <div className="info-box">
 
