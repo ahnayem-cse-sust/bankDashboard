@@ -34,13 +34,13 @@ class Section extends Component {
                 <div className="col-12 col-sm-6 col-md-3">
                     <div className="info-box">
 
-                    <span className="info-box-icon bg-info elevation-1"><i className="fa-solid fa-money-bill-1-wave"></i></span>
+                    <span className="info-box-icon bg-info elevation-1"><i className="fa-solid fa-bangladeshi-taka-sign"></i></span>
 
 
                     <div className="info-box-content">
-                        <span className="info-box-text">Total Advance</span>
+                        <span className="info-box-text">Total deposit</span>
                         <span className="info-box-number">
-                        {(Math.round(this.state.data?.TOTAL_ADVANCE * 100) / 100).toFixed(2)}
+                        {(Math.round(this.state.data?.DEPOSIT * 100) / 100).toFixed(2)}
                         {/* <small>%</small> */}
                         </span>
                     </div>
@@ -55,7 +55,7 @@ class Section extends Component {
                     <div className="info-box-content">
                         <span className="info-box-text">Total Asset</span>
                         <span className="info-box-number">
-                        {(Math.round(this.state.data?.TOTAL_ASSET * 100) / 100).toFixed(2)}
+                        {(Math.round(this.state.data?.ASSET * 100) / 100).toFixed(2)}
                         {/* <small>%</small> */}
                         </span>
                     </div>
@@ -63,12 +63,12 @@ class Section extends Component {
                 </div>
                 <div className="col-12 col-sm-6 col-md-3">
                     <div className="info-box">
-                    <span className="info-box-icon bg-info elevation-1"><i className="fa-solid fa-bangladeshi-taka-sign"></i></span>
+                    <span className="info-box-icon bg-info elevation-1"><i className="fa-solid fa-money-bill-1-wave"></i></span>
 
                     <div className="info-box-content">
-                        <span className="info-box-text">Total Deposit</span>
+                        <span className="info-box-text">Total ADVANCE</span>
                         <span className="info-box-number">
-                        {(Math.round(this.state.data?.TOTAL_DEPOSIT * 100) / 100).toFixed(2)}
+                        {(Math.round(this.state.data?.ADVANCE * 100) / 100).toFixed(2)}
                         {/* <small>%</small> */}
                         </span>
                     </div>
@@ -77,12 +77,12 @@ class Section extends Component {
                 <div className="col-12 col-sm-6 col-md-3">
                     <div className="info-box">
 
-                        <span className="info-box-icon bg-info elevation-1"><i className="fa-solid fa-bangladeshi-taka-sign"></i></span>
+                        <span className="info-box-icon bg-info elevation-1"><i className="fa-solid fa-money-bill-transfer"></i></span>
 
                         <div className="info-box-content">
-                            <span className="info-box-text">Total Liabilities</span>
+                            <span className="info-box-text">Total LIABILITY</span>
                             <span className="info-box-number">
-                            {(Math.round(this.state.data?.TOTAL_LIABILITIES * 100) / 100).toFixed(2)}
+                            {(Math.round(this.state.data?.LIABILITY * 100) / 100).toFixed(2)}
                             {/* <small>%</small> */}
                             </span>
                         </div>
@@ -90,12 +90,12 @@ class Section extends Component {
                 </div>
                   <div className="col-12 col-sm-6 col-md-3">
                     <div className="info-box">
-                        <span className="info-box-icon bg-info elevation-1"><i class="fa-solid fa-bangladeshi-taka-sign"></i></span>
+                        <span className="info-box-icon bg-info elevation-1"><i className="fa-solid fa-money-bill-trend-up"></i></span>
 
                         <div className="info-box-content">
-                            <span className="info-box-text">Total Liabilities</span>
+                            <span className="info-box-text">Total PROFIT</span>
                             <span className="info-box-number">
-                            {(Math.round(this.state.data?.TOTAL_LIABILITIES * 100) / 100).toFixed(2)}
+                            {(Math.round(this.state.data?.PROFIT * 100) / 100).toFixed(2)}
                             {/* <small>%</small> */}
                             </span>
                         </div>
@@ -103,12 +103,12 @@ class Section extends Component {
                 </div>
                   <div className="col-12 col-sm-6 col-md-3">
                     <div className="info-box">
-                        <span className="info-box-icon bg-info elevation-1"><i class="fa-solid fa-bangladeshi-taka-sign"></i></span>
+                        <span className="info-box-icon bg-info elevation-1"><i className="fas fa-chart-pie"></i></span>
 
                         <div className="info-box-content">
-                            <span className="info-box-text">Total Liabilities</span>
+                            <span className="info-box-text">Total EXPENDITURE</span>
                             <span className="info-box-number">
-                            {(Math.round(this.state.data?.TOTAL_LIABILITIES * 100) / 100).toFixed(2)}
+                            {(Math.round(this.state.data?.EXPENDITURE * 100) / 100).toFixed(2)}
                             {/* <small>%</small> */}
                             </span>
                         </div>
@@ -116,12 +116,12 @@ class Section extends Component {
                 </div>
                   <div className="col-12 col-sm-6 col-md-3">
                     <div className="info-box">
-                        <span className="info-box-icon bg-info elevation-1"><i class="fa-solid fa-bangladeshi-taka-sign"></i></span>
+                        <span className="info-box-icon bg-info elevation-1"><i className="fas fa-stamp"></i></span>
 
                         <div className="info-box-content">
-                            <span className="info-box-text">Total Liabilities</span>
+                            <span className="info-box-text">Total CL_ACCOUNT</span>
                             <span className="info-box-number">
-                            {(Math.round(this.state.data?.TOTAL_LIABILITIES * 100) / 100).toFixed(2)}
+                            {(Math.round(this.state.data?.CL_ACCOUNT * 100) / 100).toFixed(2)}
                             {/* <small>%</small> */}
                             </span>
                         </div>
@@ -129,12 +129,14 @@ class Section extends Component {
                 </div>
                   <div className="col-12 col-sm-6 col-md-3">
                     <div className="info-box">
-                        <span className="info-box-icon bg-info elevation-1"><i class="fa-solid fa-bangladeshi-taka-sign"></i></span>
+                        <span className="info-box-icon bg-info elevation-1"><i className="fas fa-landmark"></i></span>
 
                         <div className="info-box-content">
-                            <span className="info-box-text">Total Liabilities</span>
+                            <span className="info-box-text">Total LOAN ACCOUNT
+</span>
                             <span className="info-box-number">
-                            {(Math.round(this.state.data?.TOTAL_LIABILITIES * 100) / 100).toFixed(2)}
+                            {(Math.round(this.state.data?.LOAN_AC
+ * 100) / 100).toFixed(2)}
                             {/* <small>%</small> */}
                             </span>
                         </div>
