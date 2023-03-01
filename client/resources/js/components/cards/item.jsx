@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from "axios";
+import Search from "../utils/search";
 
 const baseURL = "http://172.17.0.37/dashboard/";
 
@@ -29,9 +30,10 @@ class Section extends Component {
     return (
         
             <div className="row">
+                <Search />
                 <div className="col-12 col-sm-6 col-md-3">
                     <div className="info-box">
-                    <span className="info-box-icon bg-info elevation-1"><i class="fa-solid fa-bangladeshi-taka-sign"></i></span>
+                    <span className="info-box-icon bg-info elevation-1"><i className="fa-solid fa-bangladeshi-taka-sign"></i></span>
 
                     <div className="info-box-content">
                         <span className="info-box-text">Total Advance</span>
@@ -44,7 +46,7 @@ class Section extends Component {
                 </div>
                 <div className="col-12 col-sm-6 col-md-3">
                     <div className="info-box">
-                    <span className="info-box-icon bg-info elevation-1"><i class="fa-solid fa-bangladeshi-taka-sign"></i></span>
+                    <span className="info-box-icon bg-info elevation-1"><i className="fa-solid fa-bangladeshi-taka-sign"></i></span>
 
                     <div className="info-box-content">
                         <span className="info-box-text">Total Asset</span>
@@ -57,7 +59,7 @@ class Section extends Component {
                 </div>
                 <div className="col-12 col-sm-6 col-md-3">
                     <div className="info-box">
-                    <span className="info-box-icon bg-info elevation-1"><i class="fa-solid fa-bangladeshi-taka-sign"></i></span>
+                    <span className="info-box-icon bg-info elevation-1"><i className="fa-solid fa-bangladeshi-taka-sign"></i></span>
 
                     <div className="info-box-content">
                         <span className="info-box-text">Total Deposit</span>
@@ -70,7 +72,7 @@ class Section extends Component {
                 </div>
                 <div className="col-12 col-sm-6 col-md-3">
                     <div className="info-box">
-                    <span className="info-box-icon bg-info elevation-1"><i class="fa-solid fa-bangladeshi-taka-sign"></i></span>
+                    <span className="info-box-icon bg-info elevation-1"><i className="fa-solid fa-bangladeshi-taka-sign"></i></span>
 
                     <div className="info-box-content">
                         <span className="info-box-text">Total Liabilities</span>
