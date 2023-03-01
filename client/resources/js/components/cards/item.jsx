@@ -31,6 +31,21 @@ class Section extends Component {
         
             <div className="row">
                 {/* <Search /> */}
+                    <div className="col-12 col-sm-6 col-md-3">
+                    <div className="info-box">
+
+                    <span className="info-box-icon2 bg-info elevation-1"><i className="fa-solid fa-money-bill-transfer"></i></span>
+
+
+                    <div className="info-box-content">
+                        <span className="info-box-text">Asset/liability</span>
+                        <span className="info-box-number">
+                        {(-1)*(Math.round(this.state.data?.ASSET * 100) / 100).toFixed(2)}
+                        {/* <small>%</small> */}
+                        </span>
+                    </div>
+                    </div>
+                </div>
                 <div className="col-12 col-sm-6 col-md-3">
                     <div className="info-box">
 
@@ -59,21 +74,7 @@ class Section extends Component {
                     </div>
                     </div>
                 </div>
-                <div className="col-12 col-sm-6 col-md-3">
-                    <div className="info-box">
-
-                    <span className="info-box-icon2 bg-info elevation-1"><i className="fa-solid fa-money-bill-transfer"></i></span>
-
-
-                    <div className="info-box-content">
-                        <span className="info-box-text">Asset/liability</span>
-                        <span className="info-box-number">
-                        {(-1)*(Math.round(this.state.data?.ASSET * 100) / 100).toFixed(2)}
-                        {/* <small>%</small> */}
-                        </span>
-                    </div>
-                    </div>
-                </div>
+            
            
                 <div className="col-12 col-sm-6 col-md-3">
                     <div className="info-box">
@@ -135,7 +136,7 @@ class Section extends Component {
                         <span className="info-box-icon7 bg-info elevation-1"><i className="fas fa-landmark"></i></span>
 
                         <div className="info-box-content">
-                            <span className="info-box-text">deposit account
+                            <span className="info-box-text">no of account
 </span>
                             <span className="info-box-number">
                             {(Math.round(this.state.data?.DEPOSIT_AC
