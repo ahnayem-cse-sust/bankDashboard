@@ -27,6 +27,18 @@ class Section extends Component {
 
       chooseBranch = (br_code) => {
         console.log(br_code);
+        var comp = this;
+        axios({
+            method: 'get',
+            url: baseURL+'GetBrArDivData/'+br_code,
+            responseType: 'stream'
+          })
+            .then(function (response) {
+                const data = JSON.parse(response.data);
+                const d = data[0];
+              comp.setState({ data:d });
+              console.log(comp.state);
+            });
       };
 
   render() {
