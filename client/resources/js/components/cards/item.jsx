@@ -7,7 +7,7 @@ const baseURL = "http://172.17.0.37/dashboard/dashboard/";
 class Section extends Component {
 
     state = {
-        
+        selected : {},
       };
 
       componentDidMount() {
@@ -25,12 +25,13 @@ class Section extends Component {
             });
       };
 
-      chooseBranch = (br_code) => {
-        console.log(br_code);
+      chooseBranch = (selObj) => {
+        console.log(selObj);
+        this.setState({ selected:selObj });
         var comp = this;
         axios({
             method: 'get',
-            url: baseURL+'GetBrArDivData/'+br_code,
+            url: baseURL+'GetBrArDivData/'+selObj.value,
             responseType: 'stream'
           })
             .then(function (response) {
@@ -44,11 +45,30 @@ class Section extends Component {
   render() {
 
     return (
+
+
         
             <div className="row">
                 <Search chooseBranch={this.chooseBranch} />
 
                 {/* <Search /> */}
+                <div className="row">
+                 <div className="col-12">
+                    <div className="col-md-4 col-sm-6">
+                       
+                    </div>
+                    <div className="col-md-6 col-sm-6 ">
+                        <h2><strong>{this.state.selected?.label}</strong></h2>
+                    </div>
+                    <div className="col-md-2 col-sm-6">
+                    
+                    </div>
+                </div>
+                   </div>
+                <br />
+                <br />
+
+              
                     <div className="col-12 col-sm-6 col-md-3">
                     <div className="info-box">
 

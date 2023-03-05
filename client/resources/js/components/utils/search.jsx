@@ -1,18 +1,26 @@
 import React, { Component, useState  } from 'react';
 import Select from 'react-select';
 import axios from "axios";
+import DatePicker from "react-datepicker";
+import Moment from "moment";
+
+import "react-datepicker/dist/react-datepicker.css";
 
 
 const baseURL = "http://172.17.0.37/dashboard/dashboard/";
 
 class Search extends Component {
 
+
+
     constructor(props) {
     super(props);
     this.state = {
       branchOptions : [
         
-      ]
+      ],
+      startDate : new Date()
+      ,
     };
     }
 
@@ -32,24 +40,26 @@ class Search extends Component {
     }
 
     handleBranchChange = (selected) => {
-      this.props.chooseBranch(selected.value);
+      this.props.chooseBranch(selected);
     };
 
   render() {
 
     return (
+
+           
             
             <div className="row">
               <br />
-              <div className='col-md-4'>
+              <div className='col-md-2'>
 
               </div>
-              <div className='col-md-3'>
+              <div className='col-md-4'>
                 <div className='row'>
-                  <div className='col-sm-3 col-md-3 label-div-select'>
-                    <label>Branch:</label>
+                  <div className='col-sm-4 col-md-4 label-div-select'>
+                    <label>Search for:</label>
                   </div>
-                  <div className='col-md-9 col-sm-9 div-select'>
+                  <div className='col-md-8 col-sm-8 div-select'>
                     <Select
                       className="basic-single"
                       classNamePrefix="select"
@@ -63,10 +73,17 @@ class Search extends Component {
                   </div>
                 </div>
               </div>
-              <div className='col-md-2'>
-
+              <div className='col-md-4'>
+               <div className='row'>
+                  <div className='col-sm-4 col-md-4 label-div-select'>
+                    <label>Date:</label>
+                  </div>
+                  <div className='col-md-8 col-sm-8 div-select'>
+                    <DatePicker selected={this.state.startDate} className='form-control' />
+                  </div>
+                  </div>
               </div>
-              <div className='col-md-3'>
+              <div className='col-md-2'>
                 {/* <Select
                     className="basic-single"
                     classNamePrefix="select"
@@ -81,6 +98,9 @@ class Search extends Component {
               <br />
               <br />
             </div>
+
+
+
             
     );
   }
