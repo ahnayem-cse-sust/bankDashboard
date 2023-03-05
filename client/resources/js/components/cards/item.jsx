@@ -58,7 +58,7 @@ class Section extends Component {
                        
                     </div>
                     <div className="col-md-6 col-sm-6 ">
-                        <h2><strong>{this.state.selected?.label}</strong></h2>
+                        <h2 className="text-primary"><strong>{this.state.selected?.label}</strong></h2>
                     </div>
                     <div className="col-md-2 col-sm-6">
                     
