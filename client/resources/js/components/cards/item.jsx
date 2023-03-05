@@ -57,7 +57,7 @@ class Section extends Component {
                     <div className="info-box-content">
                         <span className="info-box-text">Asset/liability</span>
                         <span className="info-box-number">
-                        {(-1)*(Math.round(this.state.data?.ASSET * 100) / 100).toFixed(2)}
+                        {(Math.round(this.state.data?.ASSET * 100) / 100).toFixed(2)}
                         {/* <small>%</small> */}
                         </span>
                     </div>
@@ -143,7 +143,10 @@ class Section extends Component {
                         <span className="info-box-icon6 bg-info elevation-1"><i className="fa-solid fa-money-bill-trend-up"></i></span>
 
                         <div className="info-box-content">
-                            <span className="info-box-text">PROFIT</span>
+           
+           
+
+                            <span className="info-box-text">PROFIT/loss</span>
                             <span className="info-box-number">
                             {(Math.round(this.state.data?.PROFIT * 100) / 100).toFixed(2)}
                             {/* <small>%</small> */}
@@ -161,8 +164,11 @@ class Section extends Component {
                             <span className="info-box-text">no of account
 </span>
                             <span className="info-box-number">
-                            {(Math.round(this.state.data?.DEPOSIT_AC
- * 100) / 100).toFixed(2)}
+                            {/*(Math.round(this.state.data?.DEPOSIT_AC
+ * 100) / 100).toFixed(2)*/}
+                         {(Math.round(this.state.data?.DEPOSIT_AC
+                         * 100) / 100)+(Math.round(this.state.data?.LOAN_AC
+                         * 100) / 100)}
                             {/* <small>%</small> */}
                             </span>
                         </div>
