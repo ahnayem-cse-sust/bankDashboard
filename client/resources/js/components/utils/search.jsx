@@ -1,17 +1,12 @@
 import React, { Component, useState  } from 'react';
 import Select from 'react-select';
 import axios from "axios";
-import DatePicker from "react-datepicker";
-import Moment from "moment";
-
-import "react-datepicker/dist/react-datepicker.css";
+import DatePicker from "../utils/datePicker";
 
 
 const baseURL = "http://172.17.0.37/dashboard/dashboard/";
 
 class Search extends Component {
-
-
 
     constructor(props) {
     super(props);
@@ -19,8 +14,6 @@ class Search extends Component {
       branchOptions : [
         
       ],
-      startDate : new Date()
-      ,
     };
     }
 
@@ -39,8 +32,8 @@ class Search extends Component {
     
     }
 
-    handleBranchChange = (selected) => {
-      this.props.chooseBranch(selected);
+    handleBranchChange = (selectedBr) => {
+      this.props.chooseBranch(selectedBr);
     };
 
   render() {
@@ -73,26 +66,22 @@ class Search extends Component {
                   </div>
                 </div>
               </div>
-              <div className='col-md-4'>
-               <div className='row'>
+              <div className='col-md-3'>
+               
+              </div>
+              <div className='col-md-3'>
+                <DatePicker selectDate={this.props.selectDate} />
+              {/* <div className='row'>
                   <div className='col-sm-4 col-md-4 label-div-select'>
                     <label>Date:</label>
                   </div>
                   <div className='col-md-8 col-sm-8 div-select'>
-                    <DatePicker selected={this.state.startDate} className='form-control' />
+                    <DatePicker
+                    showIcon
+                    selected={this.state.startDate} 
+                    onChange={(date) => this.dateChange(date)} className='form-control' />
                   </div>
-                  </div>
-              </div>
-              <div className='col-md-2'>
-                {/* <Select
-                    className="basic-single"
-                    classNamePrefix="select"
-                    isDisabled={false}
-                    isLoading={false}
-                    isClearable={true}
-                    isSearchable={true}
-                    options={this.state.branchOptions}
-                  /> */}
+                  </div> */}
               </div>
               <br />
               <br />

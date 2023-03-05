@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from "axios";
 import Search from "../utils/search";
+import Moment from "moment";
 
 const baseURL = "http://172.17.0.37/dashboard/dashboard/";
 
@@ -8,6 +9,7 @@ class Section extends Component {
 
     state = {
         selected : {},
+        selectDate : Moment().format('YYYYMMDD'),
       };
 
       componentDidMount() {
@@ -28,10 +30,14 @@ class Section extends Component {
       chooseBranch = (selObj) => {
         console.log(selObj);
         this.setState({ selected:selObj });
+        this.loadData(baseURL+'GetBrArDivData?br_code='+selObj.value+'&as_on='+this.state.selectDate);
+      };
+
+      loadData = (url)=>{
         var comp = this;
         axios({
             method: 'get',
-            url: baseURL+'GetBrArDivData/'+selObj.value,
+            url: url,
             responseType: 'stream'
           })
             .then(function (response) {
@@ -40,6 +46,11 @@ class Section extends Component {
               comp.setState({ data:d });
               console.log(comp.state);
             });
+      }
+
+      selectDate = (selectedDate) => {
+        this.setState({selectDate:Moment(selectedDate).format('YYYYMMDD')});
+        this.loadData(baseURL+'GetBrArDivData?br_code='+this.state.selected.value+'&as_on='+this.state.selectDate);
       };
 
   render() {
@@ -49,7 +60,7 @@ class Section extends Component {
 
         
             <div className="row">
-                <Search chooseBranch={this.chooseBranch} />
+                <Search chooseBranch={this.chooseBranch} selectDate={this.selectDate} />
 
                 {/* <Search /> */}
                 <div className="row">
