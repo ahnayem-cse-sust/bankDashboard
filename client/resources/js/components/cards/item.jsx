@@ -58,7 +58,7 @@ class Section extends Component {
                        
                     </div>
                     <div className="col-md-6 col-sm-6 ">
-                        <h2 className="text-primary"><strong>{this.state.selected?.label}</strong></h2>
+                        <h3 className="text-primary"><strong>{this.state.selected?.label}</strong></h3>
                     </div>
                     <div className="col-md-2 col-sm-6">
                     
@@ -77,7 +77,11 @@ class Section extends Component {
                     <div className="info-box-content">
                         <span className="info-box-text">Asset/liability</span>
                         <span className="info-box-number">
-                        {(Math.round(this.state.data?.ASSET * 100) / 100).toFixed(2)}
+
+                        {/*(Math.round(this.state.data?.ASSET * 100) / 100).toFixed(2) */}
+
+                         {((Math.round(this.state.data?.ASSET * 100) / 100)/(10000000)).toFixed(2)}
+
                         {/* <small>%</small> */}
                         </span>
                     </div>
@@ -92,7 +96,11 @@ class Section extends Component {
                     <div className="info-box-content">
                         <span className="info-box-text">deposit</span>
                         <span className="info-box-number">
-                        {(Math.round(this.state.data?.DEPOSIT * 100) / 100).toFixed(2)}
+
+                        {/*(Math.round(this.state.data?.DEPOSIT * 100) / 100).toFixed(2)*/}
+
+                        {((Math.round(this.state.data?.DEPOSIT * 100) / 100)/(10000000)).toFixed(2)}
+
                         {/* <small>%</small> */}
                         </span>
                     </div>
@@ -106,7 +114,11 @@ class Section extends Component {
                     <div className="info-box-content">
                         <span className="info-box-text">ADVANCE</span>
                         <span className="info-box-number">
-                        {(Math.round(this.state.data?.ADVANCE * 100) / 100).toFixed(2)}
+
+                        {/*(Math.round(this.state.data?.ADVANCE * 100) / 100).toFixed(2)*/}
+
+                        {((Math.round(this.state.data?.ADVANCE * 100) / 100)/(10000000)).toFixed(2)}
+
                         {/* <small>%</small> */}
                         </span>
                     </div>
@@ -122,7 +134,10 @@ class Section extends Component {
                         <div className="info-box-content">
                             <span className="info-box-text">classified loan</span>
                             <span className="info-box-number">
-                            {(Math.round(this.state.data?.CL_BALANCE * 100) / 100).toFixed(2)}
+
+                            {/*(Math.round(this.state.data?.CL_BALANCE * 100) / 100).toFixed(2)*/}
+
+                            {((Math.round(this.state.data?.CL_BALANCE * 100) / 100)/(10000000)).toFixed(2)}
                             {/* <small>%</small> */}
                             </span>
                         </div>
@@ -137,7 +152,11 @@ class Section extends Component {
                         <div className="info-box-content">
                             <span className="info-box-text">INCOME</span>
                             <span className="info-box-number">
-                            {(Math.round(this.state.data?.INCOME * 100) / 100).toFixed(2)}
+
+                            {/* (Math.round(this.state.data?.INCOME * 100) / 100).toFixed(2)*/}
+
+                            {((Math.round(this.state.data?.INCOME * 100) / 100)/(10000000)).toFixed(2)}
+
                             {/* <small>%</small> */}
                             </span>
                         </div>
@@ -151,7 +170,12 @@ class Section extends Component {
                         <div className="info-box-content">
                             <span className="info-box-text">EXPENDITURE</span>
                             <span className="info-box-number">
-                            {(Math.round(this.state.data?.EXPENDITURE * 100) / 100).toFixed(2)}
+
+                            {/*(Math.round(this.state.data?.EXPENDITURE * 100) / 100).toFixed(2)*/}
+
+
+                            {((Math.round(this.state.data?.EXPENDITURE * 100) / 100)/(10000000)).toFixed(2)}
+
                             {/* <small>%</small> */}
                             </span>
                         </div>
@@ -168,7 +192,11 @@ class Section extends Component {
 
                             <span className="info-box-text">PROFIT/loss</span>
                             <span className="info-box-number">
-                            {(Math.round(this.state.data?.PROFIT * 100) / 100).toFixed(2)}
+
+                            {/*(Math.round(this.state.data?.PROFIT * 100) / 100).toFixed(2)*/}
+
+                             {((Math.round(this.state.data?.PROFIT * 100) / 100)/(10000000)).toFixed(2)}
+
                             {/* <small>%</small> */}
                             </span>
                         </div>
@@ -185,7 +213,7 @@ class Section extends Component {
 </span>
                             <span className="info-box-number">
                             {/*(Math.round(this.state.data?.DEPOSIT_AC
- * 100) / 100).toFixed(2)*/}
+                            * 100) / 100).toFixed(2)*/}
                          {(Math.round(this.state.data?.DEPOSIT_AC
                          * 100) / 100)+(Math.round(this.state.data?.LOAN_AC
                          * 100) / 100)}
