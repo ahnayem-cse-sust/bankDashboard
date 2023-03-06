@@ -39,9 +39,6 @@ class Search extends Component {
   render() {
 
     return (
-
-           
-            
             <div className="row">
               <br />
               <div className='col-md-2'>

@@ -67,7 +67,7 @@ class Section extends Component {
                        
                     </div>
                     <div className="col-md-6 col-sm-6 ">
-                        <h3 className="text-primary"><strong>{this.state.selected?.label}</strong></h3>
+                        <h3 className="text-primary"><strong>{this.state.selected?.label.slice(0,-5)}</strong></h3>
                     </div>
                     <div className="col-md-2 col-sm-6">
                     
