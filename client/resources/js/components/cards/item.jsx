@@ -10,6 +10,7 @@ class Section extends Component {
     state = {
         selected : null,
         selectDate : Moment().format('YYYYMMDD'),
+        loading : true
       };
 
       componentDidMount() {
@@ -28,6 +29,7 @@ class Section extends Component {
 
       loadData = (url)=>{
         var comp = this;
+        this.setState({ loading:true });
         axios({
             method: 'get',
             url: url,
@@ -38,6 +40,7 @@ class Section extends Component {
                 const d = data[0];
               comp.setState({ data:d });
               console.log(comp.state);
+              comp.setState({ loading:false });
             });
       }
 
@@ -54,13 +57,10 @@ class Section extends Component {
   render() {
 
     return (
-
-
-        
             <div className="row">
+                
                 <Search chooseBranch={this.chooseBranch} selectDate={this.selectDate} />
 
-                {/* <Search /> */}
                 <div className="row">
                  <div className="col-12">
                     <div className="col-md-4 col-sm-6">
@@ -77,7 +77,10 @@ class Section extends Component {
                 <br />
                 <br />
 
-              
+                
+                { this.state.loading && <div class="loader"></div>} 
+                { !this.state.loading && 
+                <div>
                     <div className="col-12 col-sm-6 col-md-3">
                     <div className="info-box">
 
@@ -86,16 +89,12 @@ class Section extends Component {
                     <div className="info-box-content">
                         <span className="info-box-text">Asset/liability</span>
                         <span className="info-box-number">
-
-                        {/*(Math.round(this.state.data?.ASSET * 100) / 100).toFixed(2) */}
-
-                         {((Math.round(this.state.data?.ASSET * 100) / 100)/(10000000)).toFixed(2)}
-
-                        {/* <small>%</small> */}
+                        {((Math.round(this.state.data?.ASSET * 100) / 100)/(10000000)).toFixed(2)}
                         </span>
                     </div>
                     </div>
                 </div>
+
                 <div className="col-12 col-sm-6 col-md-3">
                     <div className="info-box">
 
@@ -219,22 +218,18 @@ class Section extends Component {
 
                         <div className="info-box-content">
                             <span className="info-box-text">no of account
-</span>
+                            </span>
                             <span className="info-box-number">
-                            {/*(Math.round(this.state.data?.DEPOSIT_AC
-                            * 100) / 100).toFixed(2)*/}
                          {(Math.round(this.state.data?.DEPOSIT_AC
                          * 100) / 100)+(Math.round(this.state.data?.LOAN_AC
                          * 100) / 100)}
-                            {/* <small>%</small> */}
                             </span>
                         </div>
                     </div>
                 </div>
-            </div>
-
-
-            
+                </div>
+                 }
+            </div>      
     );
   }
 }
