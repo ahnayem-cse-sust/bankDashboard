@@ -5,11 +5,15 @@ import Moment from "moment";
 
 const baseURL = "http://172.17.0.37/dashboard/dashboard/";
 
+
+
 class Section extends Component {
+
+
 
     state = {
         selected : null,
-        selectDate : Moment().format('YYYYMMDD'),
+        selectDate : Moment().format('DD/MM/YYYY'),
       };
 
       componentDidMount() {
@@ -43,13 +47,16 @@ class Section extends Component {
 
       selectDate = (selectedDate) => {
         console.log(selectedDate);
-        this.setState({selectDate:Moment(selectedDate).format('YYYYMMDD')});
+        this.setState({selectDate:Moment(selectedDate).format('DD/MM/YYYY')});
         if(this.state.selected){
-            this.loadData(baseURL+'GetBrArDivData?br_code='+this.state.selected.value+'&as_on='+Moment(selectedDate).format('YYYYMMDD'));
+            this.loadData(baseURL+'GetBrArDivData?br_code='+this.state.selected.value+'&as_on='+Moment(selectedDate).format('DD/MM/YYYY'));
         }else{
-            this.loadData(baseURL+'getDashboardinfo?&as_on='+Moment(selectedDate).format('YYYYMMDD'));
+            this.loadData(baseURL+'getDashboardinfo?&as_on='+Moment(selectedDate).format('DD/MM/YYYY'));
         }
       };
+
+      
+   
 
   render() {
 
@@ -61,21 +68,38 @@ class Section extends Component {
                 <Search chooseBranch={this.chooseBranch} selectDate={this.selectDate} />
 
                 {/* <Search /> */}
-                <div className="row">
+              
+
+                   <div className="row">
                  <div className="col-12">
-                    <div className="col-md-4 col-sm-6">
-                       
+                 <div className="col-md-3 col-sm-6">
+                      
                     </div>
-                    <div className="col-md-6 col-sm-6 ">
-                        <h3 className="text-primary"><strong>{this.state.selected?.label}</strong></h3>
+                   
+                    <div className="col-md-7 col-sm-6 ">
+                        <div className="col-md-6 col-sm-6">
+                         <span className="" style={{ fontSize: 22 , color: "FireBrick"}}><strong>{this.state.selected?.label} </strong></span>
+                      
+                        </div>
+                        <div className="col-md-6 col-sm-6">
+                            
+                            <span className=""  style={{ fontSize: 18 }}><strong>As On: {this.state.selectDate}
+                           </strong></span>
+                        </div>
                     </div>
+                    
                     <div className="col-md-2 col-sm-6">
+                        <div className="col-md-10 col-sm-6">
+                            <span className="" style={{backgroundColor: "lightblue", fontSize: 14}}><strong>Figure In Cr.</strong></span>
+                        </div>
+                        <div className="col-md-2 col-sm-6">
+                        </div>
                     
                     </div>
+                    </div>
                 </div>
-                   </div>
                 <br />
-                <br />
+               
 
               
                     <div className="col-12 col-sm-6 col-md-3">

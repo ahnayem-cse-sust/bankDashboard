@@ -44,13 +44,13 @@ class Search extends Component {
             
             <div className="row">
               <br />
-              <div className='col-md-2'>
+              <div className='col-md-5'>
 
               </div>
               <div className='col-md-4 col-sm 4'>
                 <div className='row'>
                   <div className='col-sm-4 col-md-4 label-div-select'>
-                    <label>Search for:</label>
+                    <label>Search for :</label>
                   </div>
                   <div className='col-md-8 col-sm-4 div-select'>
                     <Select
@@ -66,11 +66,9 @@ class Search extends Component {
                   </div>
                 </div>
               </div>
+              
               <div className='col-md-3'>
-               
-              </div>
-              <div className='col-md-3'>
-                <DatePicker selectDate={this.props.selectDate} />
+                <DatePicker selectDate={this.props.selectDate}  />
               {/* <div className='row'>
                   <div className='col-sm-4 col-md-4 label-div-select'>
                     <label>Date:</label>
