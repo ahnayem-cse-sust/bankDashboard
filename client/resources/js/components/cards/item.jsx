@@ -13,7 +13,7 @@ class Section extends Component {
 
     state = {
         selected : null,
-        selectDate : Moment().format('DD/MM/YYYY'),
+        selectDate : Moment().format('YYYYMMDD'),
         loading : true
 
       };
@@ -51,11 +51,11 @@ class Section extends Component {
 
       selectDate = (selectedDate) => {
         console.log(selectedDate);
-        this.setState({selectDate:Moment(selectedDate).format('DD/MM/YYYY')});
+        this.setState({selectDate:Moment(selectedDate).format('YYYYMMDD')});
         if(this.state.selected){
-            this.loadData(baseURL+'GetBrArDivData?br_code='+this.state.selected.value+'&as_on='+Moment(selectedDate).format('DD/MM/YYYY'));
+            this.loadData(baseURL+'GetBrArDivData?br_code='+this.state.selected.value+'&as_on='+Moment(selectedDate).format('YYYYMMDD'));
         }else{
-            this.loadData(baseURL+'getDashboardinfo?&as_on='+Moment(selectedDate).format('DD/MM/YYYY'));
+            this.loadData(baseURL+'getDashboardinfo?&as_on='+Moment(selectedDate).format('YYYYMMDD'));
         }
       };
 
@@ -83,15 +83,15 @@ class Section extends Component {
                         </div>
                         <div className="col-md-6 col-sm-6">
                             
-                            <span className=""  style={{ fontSize: 18 }}><strong>As On: {this.state.selectDate}
-                           </strong></span>
+                            {/* <span className=""  style={{ fontSize: 18 }}><strong>As On: {Moment(this.state.selectDate).format('DD-MM-YYYY')}
+                           </strong></span> */}
                         </div>
 
                     </div>
                     
                     <div className="col-md-2 col-sm-6">
                         <div className="col-md-10 col-sm-6">
-                            <span className="" style={{backgroundColor: "lightblue", fontSize: 14}}><strong>Figure In Cr.</strong></span>
+                            <span className="figure-crore"><strong>Figure In Cr.</strong></span>
                         </div>
                         <div className="col-md-2 col-sm-6">
                         </div>
