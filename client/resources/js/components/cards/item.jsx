@@ -8,29 +8,22 @@ const baseURL = "http://172.17.0.37/dashboard/dashboard/";
 class Section extends Component {
 
     state = {
-        selected : {},
+        selected : null,
         selectDate : Moment().format('YYYYMMDD'),
       };
 
       componentDidMount() {
-        var comp = this;
-        axios({
-            method: 'get',
-            url: baseURL+'index',
-            responseType: 'stream'
-          })
-            .then(function (response) {
-                const data = JSON.parse(response.data);
-                const d = data[0];
-              comp.setState({ data:d });
-              console.log(comp.state);
-            });
+        this.loadData(baseURL+'getDashboardinfo?&as_on='+this.state.selectDate);
       };
 
       chooseBranch = (selObj) => {
         console.log(selObj);
         this.setState({ selected:selObj });
-        this.loadData(baseURL+'GetBrArDivData?br_code='+selObj.value+'&as_on='+this.state.selectDate);
+        if(selObj){
+            this.loadData(baseURL+'GetBrArDivData?br_code='+selObj.value+'&as_on='+this.state.selectDate);
+        }else{
+            this.loadData(baseURL+'getDashboardinfo?&as_on='+this.state.selectDate);
+        }
       };
 
       loadData = (url)=>{
@@ -49,8 +42,13 @@ class Section extends Component {
       }
 
       selectDate = (selectedDate) => {
+        console.log(selectedDate);
         this.setState({selectDate:Moment(selectedDate).format('YYYYMMDD')});
-        this.loadData(baseURL+'GetBrArDivData?br_code='+this.state.selected.value+'&as_on='+this.state.selectDate);
+        if(this.state.selected){
+            this.loadData(baseURL+'GetBrArDivData?br_code='+this.state.selected.value+'&as_on='+Moment(selectedDate).format('YYYYMMDD'));
+        }else{
+            this.loadData(baseURL+'getDashboardinfo?&as_on='+Moment(selectedDate).format('YYYYMMDD'));
+        }
       };
 
   render() {

@@ -47,12 +47,12 @@ class Search extends Component {
               <div className='col-md-2'>
 
               </div>
-              <div className='col-md-4'>
+              <div className='col-md-4 col-sm 4'>
                 <div className='row'>
                   <div className='col-sm-4 col-md-4 label-div-select'>
                     <label>Search for:</label>
                   </div>
-                  <div className='col-md-8 col-sm-8 div-select'>
+                  <div className='col-md-8 col-sm-4 div-select'>
                     <Select
                       className="basic-single"
                       classNamePrefix="select"
