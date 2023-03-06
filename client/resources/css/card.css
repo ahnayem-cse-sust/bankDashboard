@@ -3,7 +3,11 @@
     float: right;
     padding-bottom: 0px;
     position: relative;
-    bottom: -17px;
-    right: -28px;
+    bottom: 1px;
+    right: 16px;
     background-color: lightblue;
+}
+.br-name{
+    font-size: 22px;
+    padding-bottom: 0px;
 }

@@ -69,36 +69,14 @@ class Section extends Component {
                 
                 <Search chooseBranch={this.chooseBranch} selectDate={this.selectDate} />
                 {/* <Search /> */}            
-
-                <div className="row">
-                 <div className="col-12">
-                    <div className="col-md-3 col-sm-6">
-                      
-                    </div>                   
-                    <div className="col-md-7 col-sm-6 ">
-                        <div className="col-md-6 col-sm-6">
-                        <span className="" style={{ fontSize: 22 , color: "FireBrick"}}><strong>{this.state.selected?.value} </strong></span>
-                         <span className="" style={{ fontSize: 22 , color: "FireBrick"}}><strong>{this.state.selected?.label.slice(0,-5)} </strong></span>
-                      
-                        </div>
-                        <div className="col-md-6 col-sm-6">
-                            
-                            {/* <span className=""  style={{ fontSize: 18 }}><strong>As On: {Moment(this.state.selectDate).format('DD-MM-YYYY')}
-                           </strong></span> */}
-                        </div>
-
-                    </div>
-                    
-                    <div className="col-md-2 col-sm-6">
-                        <div className="col-md-10 col-sm-6">
-                            <span className="figure-crore"><strong>Figure In Cr.</strong></span>
-                        </div>
-                        <div className="col-md-2 col-sm-6">
-                        </div>
-                    
-                    </div>
-                    </div>
+                 <div className="col-12 text-center br-name">   
+                         {this.state.selected &&
+                        <span className=""><strong>{this.state.selected?.value + '-' +
+                        this.state.selected?.label.slice(0,-5)} Branch </strong></span>
+                        } 
                 </div>
+                
+                <span className="figure-crore"><strong>Figure In Cr.</strong></span>
                 <br />
                
 
