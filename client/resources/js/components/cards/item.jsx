@@ -1,37 +1,36 @@
 import React, { Component } from 'react';
 import axios from "axios";
 import Search from "../utils/search";
+import Moment from "moment";
 
 const baseURL = "http://172.17.0.37/dashboard/dashboard/";
 
 class Section extends Component {
 
     state = {
-        selected : {},
+        selected : null,
+        selectDate : Moment().format('YYYYMMDD'),
       };
 
       componentDidMount() {
-        var comp = this;
-        axios({
-            method: 'get',
-            url: baseURL+'index',
-            responseType: 'stream'
-          })
-            .then(function (response) {
-                const data = JSON.parse(response.data);
-                const d = data[0];
-              comp.setState({ data:d });
-              console.log(comp.state);
-            });
+        this.loadData(baseURL+'getDashboardinfo?&as_on='+this.state.selectDate);
       };
 
       chooseBranch = (selObj) => {
         console.log(selObj);
         this.setState({ selected:selObj });
+        if(selObj){
+            this.loadData(baseURL+'GetBrArDivData?br_code='+selObj.value+'&as_on='+this.state.selectDate);
+        }else{
+            this.loadData(baseURL+'getDashboardinfo?&as_on='+this.state.selectDate);
+        }
+      };
+
+      loadData = (url)=>{
         var comp = this;
         axios({
             method: 'get',
-            url: baseURL+'GetBrArDivData/'+selObj.value,
+            url: url,
             responseType: 'stream'
           })
             .then(function (response) {
@@ -40,6 +39,16 @@ class Section extends Component {
               comp.setState({ data:d });
               console.log(comp.state);
             });
+      }
+
+      selectDate = (selectedDate) => {
+        console.log(selectedDate);
+        this.setState({selectDate:Moment(selectedDate).format('YYYYMMDD')});
+        if(this.state.selected){
+            this.loadData(baseURL+'GetBrArDivData?br_code='+this.state.selected.value+'&as_on='+Moment(selectedDate).format('YYYYMMDD'));
+        }else{
+            this.loadData(baseURL+'getDashboardinfo?&as_on='+Moment(selectedDate).format('YYYYMMDD'));
+        }
       };
 
   render() {
@@ -49,7 +58,7 @@ class Section extends Component {
 
         
             <div className="row">
-                <Search chooseBranch={this.chooseBranch} />
+                <Search chooseBranch={this.chooseBranch} selectDate={this.selectDate} />
 
                 {/* <Search /> */}
                 <div className="row">
