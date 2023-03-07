@@ -21,6 +21,8 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+    <!-- <script src="/build/assets/app-a6d2e222.js"></script> -->
     
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @viteReactRefresh
