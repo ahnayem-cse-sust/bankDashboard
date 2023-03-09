@@ -140,7 +140,7 @@ class Section extends Component {
 
                         {/*(Math.round(this.state.data?.ADVANCE * 100) / 100).toFixed(2)*/}
 
-                        {((Math.round(this.state.data?.ADVANCE * 100) / 100)/(10000000)).toFixed(2)}
+                        {this.numberFormatter(((this.state.data?.ADVANCE * 100) / 100)/(10000000))}
 
                         {/* <small>%</small> */}
                         </span>
@@ -160,7 +160,8 @@ class Section extends Component {
 
                             {/*(Math.round(this.state.data?.CL_BALANCE * 100) / 100).toFixed(2)*/}
 
-                            {((Math.round(this.state.data?.CL_BALANCE * 100) / 100)/(10000000)).toFixed(2)}
+                              {this.numberFormatter(((this.state.data?.CL_BALANCE * 100) / 100)/(10000000))}
+
                             {/* <small>%</small> */}
                             </span>
                         </div>
@@ -178,7 +179,7 @@ class Section extends Component {
 
                             {/* (Math.round(this.state.data?.INCOME * 100) / 100).toFixed(2)*/}
 
-                            {((Math.round(this.state.data?.INCOME * 100) / 100)/(10000000)).toFixed(2)}
+                                {this.numberFormatter(((this.state.data?.INCOME * 100) / 100)/(10000000))}
 
                             {/* <small>%</small> */}
                             </span>
@@ -197,7 +198,7 @@ class Section extends Component {
                             {/*(Math.round(this.state.data?.EXPENDITURE * 100) / 100).toFixed(2)*/}
 
 
-                            {((Math.round(this.state.data?.EXPENDITURE * 100) / 100)/(10000000)).toFixed(2)}
+                           {this.numberFormatter(((this.state.data?.EXPENDITURE * 100) / 100)/(10000000))}
 
                             {/* <small>%</small> */}
                             </span>
@@ -218,7 +219,7 @@ class Section extends Component {
 
                             {/*(Math.round(this.state.data?.PROFIT * 100) / 100).toFixed(2)*/}
 
-                             {((Math.round(this.state.data?.PROFIT * 100) / 100)/(10000000)).toFixed(2)}
+                             {this.numberFormatter(((this.state.data?.PROFIT * 100) / 100)/(10000000))}
 
                             {/* <small>%</small> */}
                             </span>
@@ -235,9 +236,10 @@ class Section extends Component {
                             <span className="info-box-text">no of account
                             </span>
                             <span className="info-box-number">
-                         {(Math.round(this.state.data?.DEPOSIT_AC
+                         {this.numberFormatter((((Math.round(this.state.data?.DEPOSIT_AC
                          * 100) / 100)+(Math.round(this.state.data?.LOAN_AC
-                         * 100) / 100)}
+                         * 100) / 100))))}
+
                             </span>
                         </div>
                     </div>
