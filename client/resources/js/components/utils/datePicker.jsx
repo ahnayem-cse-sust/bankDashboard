@@ -10,7 +10,7 @@ import "react-datepicker/dist/react-datepicker.css";
 
 
 const datePickerComp = (props) => {
-  const [startDate, setStartDate] = useState(new Date());
+  const [startDate, setStartDate] = useState(Date.parse('28 Feb 2023 00:00:00 GMT'));
 
 
   return (
@@ -22,6 +22,7 @@ const datePickerComp = (props) => {
             <DatePicker
             showIcon
             selected={startDate} 
+            dateFormat='dd/MM/yyyy'
             onSelect={props.selectDate}
             onChange={(date) => setStartDate(date)} 
             className='form-control'

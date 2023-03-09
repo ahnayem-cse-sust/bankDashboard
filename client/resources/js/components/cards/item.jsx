@@ -13,7 +13,7 @@ class Section extends Component {
 
     state = {
         selected : null,
-        selectDate : Moment().format('YYYYMMDD'),
+        selectDate : Moment('20230228').format('YYYYMMDD'),
         loading : true
 
       };
@@ -61,7 +61,16 @@ class Section extends Component {
         }else{
             this.loadData(baseURL+'getDashboardinfo?&as_on='+Moment(selectedDate).format('YYYYMMDD'));
         }
-      };
+      }
+
+    numberFormatter = (value) => {
+        return parseFloat(parseFloat(value).toFixed(2)).toLocaleString(
+        "en-IN",
+        {
+            useGrouping: true,
+        }
+        );
+    }
 
       
    
@@ -96,7 +105,7 @@ class Section extends Component {
                     <div className="info-box-content">
                         <span className="info-box-text">Asset/liability</span>
                         <span className="info-box-number">
-                        {((Math.round(this.state.data?.ASSET * 100) / 100)/(10000000)).toFixed(2)}
+                        {this.numberFormatter(((this.state.data?.ASSET * 100) / 100)/(10000000))}
                         </span>
                     </div>
                     </div>
@@ -111,12 +120,8 @@ class Section extends Component {
                     <div className="info-box-content">
                         <span className="info-box-text">deposit</span>
                         <span className="info-box-number">
-
-                        {/*(Math.round(this.state.data?.DEPOSIT * 100) / 100).toFixed(2)*/}
-
-                        {((Math.round(this.state.data?.DEPOSIT * 100) / 100)/(10000000)).toFixed(2)}
-
-                        {/* <small>%</small> */}
+                        {/* {((Math.round(this.state.data?.DEPOSIT * 100) / 100)/(10000000)).toFixed(2)} */}
+                        {this.numberFormatter(((this.state.data?.DEPOSIT * 100) / 100)/(10000000))}
                         </span>
                     </div>
                     </div>

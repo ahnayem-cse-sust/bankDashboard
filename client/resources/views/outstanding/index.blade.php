@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="{{ config('app.locale') }}">
+<html 
+ng="{{ config('app.locale') }}">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
