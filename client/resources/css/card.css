@@ -1,0 +1,13 @@
+
+.figure-crore{
+    float: right;
+    padding-bottom: 0px;
+    position: relative;
+    bottom: 1px;
+    right: 16px;
+    background-color: lightblue;
+}
+.br-name{
+    font-size: 22px;
+    padding-bottom: 0px;
+}
