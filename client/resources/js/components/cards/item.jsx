@@ -82,14 +82,17 @@ class Section extends Component {
                 
                 <Search chooseBranch={this.chooseBranch} selectDate={this.selectDate} />
                 {/* <Search /> */}            
+
+
                  <div className="col-12 text-center br-name">   
                          {this.state.selected &&
                         <span className=""><strong>{this.state.selected?.value + '-' +
-                        this.state.selected?.label.slice(0,-5)} Branch </strong></span>
+                        this.state.selected?.label.slice(0,-5)} </strong></span>
                         } 
+
                 </div>
                 
-                <span className="figure-crore"><strong>Figure In Cr.</strong></span>
+                <span className="figure-crore"><strong>Figure In Crore</strong></span>
                 <br />
                
 
@@ -100,7 +103,7 @@ class Section extends Component {
                     <div className="col-12 col-sm-6 col-md-3">
                     <div className="info-box">
 
-                    <span className="info-box-icon2 bg-info elevation-1"><i className="fa-solid fa-money-bill-transfer"></i></span>
+                    <span className="info-box-icon bg-info elevation-1"><i className="fa-solid fa-money-bill-transfer blackiconcolor"></i></span>
 
                     <div className="info-box-content">
                         <span className="info-box-text">Asset/liability</span>
@@ -114,7 +117,7 @@ class Section extends Component {
                 <div className="col-12 col-sm-6 col-md-3">
                     <div className="info-box">
 
-                    <span className="info-box-icon bg-info elevation-1"><i className="fa-solid fa-bangladeshi-taka-sign"></i></span>
+                    <span className="info-box-icon1 bg-info elevation-1"><i className="fa-solid fa-bangladeshi-taka-sign blackiconcolor"></i></span>
 
 
                     <div className="info-box-content">
@@ -129,10 +132,10 @@ class Section extends Component {
                     <div className="col-12 col-sm-6 col-md-3">
                     <div className="info-box">
 
-                    <span className="info-box-icon1 bg-info elevation-1"><i className="fa-solid fa-money-bill-1-wave"></i></span>
+                    <span className="info-box-icon2 bg-info elevation-1"><i className="fa-solid fa-money-bill-1-wave blackiconcolor"></i></span>
 
                     <div className="info-box-content">
-                        <span className="info-box-text">ADVANCE</span>
+                        <span className="info-box-text">LOAN & ADVANCE</span>
                         <span className="info-box-number">
 
                         {/*(Math.round(this.state.data?.ADVANCE * 100) / 100).toFixed(2)*/}
@@ -149,7 +152,7 @@ class Section extends Component {
                 <div className="col-12 col-sm-6 col-md-3">
                     <div className="info-box">
 
-                        <span className="info-box-icon3 bg-info elevation-1"><i className="fa-solid fa-chart-line"></i></span>
+                        <span className="info-box-icon3 bg-info elevation-1"><i className="fa-solid fa-chart-line blackiconcolor"></i></span>
 
                         <div className="info-box-content">
                             <span className="info-box-text">classified loan</span>
@@ -167,7 +170,7 @@ class Section extends Component {
                 <div className="col-12 col-sm-6 col-md-3">
                     <div className="info-box">
 
-                        <span className="info-box-icon4 bg-info elevation-1"><i className="far fa-money-bill-alt"></i></span>
+                        <span className="info-box-icon4 bg-info elevation-1"><i className="far fa-money-bill-alt blackiconcolor"></i></span>
 
                         <div className="info-box-content">
                             <span className="info-box-text">INCOME</span>
@@ -185,7 +188,7 @@ class Section extends Component {
                   <div className="col-12 col-sm-6 col-md-3">
                     <div className="info-box">
 
-                        <span className="info-box-icon5 bg-info elevation-1"><i className="fas fa-chart-pie"></i></span>
+                        <span className="info-box-icon5 bg-info elevation-1"><i className="fas fa-chart-pie blackiconcolor"></i></span>
 
                         <div className="info-box-content">
                             <span className="info-box-text">EXPENDITURE</span>
@@ -204,7 +207,7 @@ class Section extends Component {
                  <div className="col-12 col-sm-6 col-md-3">
                     <div className="info-box">
 
-                        <span className="info-box-icon6 bg-info elevation-1"><i className="fa-solid fa-money-bill-trend-up"></i></span>
+                        <span className="info-box-icon6 bg-info elevation-1"><i className="fa-solid fa-money-bill-trend-up blackiconcolor"></i></span>
 
                         <div className="info-box-content">
            
@@ -226,7 +229,7 @@ class Section extends Component {
                   <div className="col-12 col-sm-6 col-md-3">
                     <div className="info-box">
                     
-                        <span className="info-box-icon7 bg-info elevation-1"><i className="fa fa-bar-chart"></i></span>
+                        <span className="info-box-icon7 bg-info elevation-1"><i className="fa fa-bar-chart blackiconcolor"></i></span>
 
                         <div className="info-box-content">
                             <span className="info-box-text">no of account
