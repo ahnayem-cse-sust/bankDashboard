@@ -23,9 +23,9 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <!-- @vite(['resources/css/app.css', 'resources/js/app.js'])
     @viteReactRefresh
-    @vite('resources/js/react.jsx')
+    @vite('resources/js/react.jsx') -->
 
 </head>
 

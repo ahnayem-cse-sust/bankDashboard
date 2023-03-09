@@ -38,6 +38,10 @@ class Section extends Component {
         axios({
             method: 'get',
             url: url,
+            headers: { 
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*'
+                },
             responseType: 'stream'
           })
             .then(function (response) {
