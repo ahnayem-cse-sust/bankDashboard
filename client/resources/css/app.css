@@ -35,3 +35,10 @@
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
   }
+
+  .br-name{
+    color: #240303;
+  }
+  .info-box-text{
+    color: #240303;
+  }

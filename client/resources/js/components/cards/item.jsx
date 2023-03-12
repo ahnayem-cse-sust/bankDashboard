@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from "axios";
 import Search from "../utils/search";
 import Moment from "moment";
+import BranchInfo from '../infoItems/branchInfo';
 
 const baseURL = "http://172.17.0.37/dashboard/dashboard/";
 
@@ -80,22 +81,10 @@ class Section extends Component {
     return (
             <div className="row">
                 
-                <Search chooseBranch={this.chooseBranch} selectDate={this.selectDate} />
-                {/* <Search /> */}            
+                <Search chooseBranch={this.chooseBranch} selectDate={this.selectDate} />        
 
+                <BranchInfo selectedBranch={this.state.selected} />
 
-                <div className="col-12 text-center br-name">   
-                         {this.state.selected &&
-                        <span className=""><strong>{this.state.selected?.value + '-' +
-                        this.state.selected?.label.slice(0,-5)} </strong></span>
-                        }
-                </div>
-
-           
-
-
-
-                
                 <span className="figure-crore"><strong>Figure In Crore</strong></span>
                 <br />
                
