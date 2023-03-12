@@ -133,7 +133,7 @@ class Section extends Component {
                     <div className="col-12 col-sm-6 col-md-3">
                     <div className="info-box">
 
-                    <span className="info-box-icon2 bg-info elevation-1"><i className="fa-solid fa-money-bill-1-wave blackiconcolor"></i></span>
+                    <span className="info-box-icon4 bg-info elevation-1"><i className="fa-solid fa-money-bill-1-wave blackiconcolor"></i></span>
 
                     <div className="info-box-content">
                         <span className="info-box-text">LOAN & ADVANCE</span>
@@ -172,7 +172,7 @@ class Section extends Component {
                 <div className="col-12 col-sm-6 col-md-3">
                     <div className="info-box">
 
-                        <span className="info-box-icon4 bg-info elevation-1"><i className="far fa-money-bill-alt blackiconcolor"></i></span>
+                        <span className="info-box-icon2 bg-info elevation-1"><i className="far fa-money-bill-alt blackiconcolor"></i></span>
 
                         <div className="info-box-content">
                             <span className="info-box-text">INCOME</span>
