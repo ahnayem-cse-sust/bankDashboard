@@ -91,6 +91,9 @@ class Section extends Component {
                         }
                 </div>
 
+           
+
+
 
                 
                 <span className="figure-crore"><strong>Figure In Crore</strong></span>
@@ -104,7 +107,7 @@ class Section extends Component {
                     <div className="col-12 col-sm-6 col-md-3">
                     <div className="info-box">
 
-                    <span className="info-box-icon bg-info elevation-1"><i className="fa-solid fa-money-bill-transfer blackiconcolor"></i></span>
+                    <span className="info-box-icon bg-info elevation-1"><i className="fa fa-cubes blackiconcolor"></i></span>
 
                     <div className="info-box-content">
                         <span className="info-box-text">Asset/liability</span>
