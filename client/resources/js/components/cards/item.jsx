@@ -84,13 +84,14 @@ class Section extends Component {
                 {/* <Search /> */}            
 
 
-                 <div className="col-12 text-center br-name">   
+                <div className="col-12 text-center br-name">   
                          {this.state.selected &&
                         <span className=""><strong>{this.state.selected?.value + '-' +
                         this.state.selected?.label.slice(0,-5)} </strong></span>
-                        } 
-
+                        }
                 </div>
+
+
                 
                 <span className="figure-crore"><strong>Figure In Crore</strong></span>
                 <br />
