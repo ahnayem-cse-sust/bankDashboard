@@ -21,16 +21,25 @@ class Section extends Component {
 
       componentDidMount() {
         this.loadData(baseURL+'getDashboardinfo?&as_on='+this.state.selectDate);
+        let selObj = {};
+        selObj.label = '';
+        selObj.value = 'WHOLE BANK';
+        this.setState({ selected:selObj });
       };
 
       chooseBranch = (selObj) => {
         console.log(selObj);
-        this.setState({ selected:selObj });
         if(selObj){
             this.loadData(baseURL+'GetBrArDivData?br_code='+selObj.value+'&as_on='+this.state.selectDate);
         }else{
             this.loadData(baseURL+'getDashboardinfo?&as_on='+this.state.selectDate);
         }
+        if(selObj === null || selObj === undefined){
+            selObj = {};
+            selObj.label = '';
+            selObj.value = 'WHOLE BANK';
+        }
+        this.setState({ selected:selObj });
       };
 
       loadData = (url)=>{
@@ -57,8 +66,12 @@ class Section extends Component {
       selectDate = (selectedDate) => {
         console.log(selectedDate);
         this.setState({selectDate:Moment(selectedDate).format('YYYYMMDD')});
-        if(this.state.selected){
-            this.loadData(baseURL+'GetBrArDivData?br_code='+this.state.selected.value+'&as_on='+Moment(selectedDate).format('YYYYMMDD'));
+        let br_code = this.state.selected.value;
+        if(br_code = 'WHOLE BANK'){
+            br_code = '';
+        }
+        if(br_code){
+            this.loadData(baseURL+'GetBrArDivData?br_code='+br_code+'&as_on='+Moment(selectedDate).format('YYYYMMDD'));
         }else{
             this.loadData(baseURL+'getDashboardinfo?&as_on='+Moment(selectedDate).format('YYYYMMDD'));
         }

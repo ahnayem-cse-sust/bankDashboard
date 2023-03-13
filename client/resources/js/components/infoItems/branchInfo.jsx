@@ -11,12 +11,19 @@ const BranchInfo = (props) => {
     useEffect(() => {
         // console.log(props.selectedBranch?.value);
         if(brCode !== props.selectedBranch?.value){
+          if(props.selectedBranch){
             setBrCode(props.selectedBranch.value);
             getAllData(props.selectedBranch.value);
+          } else{
+            setBrCode(undefined);
+            getAllData(undefined);
+          }
+            
         }
       });
 
     async function getAllData(br_code) {
+        br_code = br_code === 'WHOLE BANK' ? '' : br_code;
         let url = baseURL+'getBranchCount?br_code='+br_code; 
         try {
             axios({
@@ -40,9 +47,12 @@ const BranchInfo = (props) => {
 
     const brDataHtml = []
 
-    data.slice().reverse().forEach((d) => {
-        if(d.value>1){
-        brDataHtml.push(<h4 className=''>{d.label} : {d.value}</h4>)
+    data.slice().reverse().forEach((d,i) => {
+      // console.log(i);
+        if(d.value>1 && i>0){
+              brDataHtml.push(<span className='br-count'>{d.label} : {d.value}   </span>)
+            } else if(d.value>1){
+              brDataHtml.push(<span className='br-count'>{d.label} : {d.value}   </span>)
         }
     })
 
@@ -50,9 +60,12 @@ const BranchInfo = (props) => {
       <div className="row">
           <div className="col-sm-12" >
           <div className="col-12 text-center br-name">   
-                         {props.selectedBranch &&
-                        <span className=""><strong>{props.selectedBranch?.value + '-' +
-                        props.selectedBranch?.label.slice(0,-5)} </strong></span>
+                         {props.selectedBranch?.label &&
+                        <h3 className=""><strong>{props.selectedBranch?.value + '-' +
+                        props.selectedBranch?.label.slice(0,-5)} </strong></h3>
+                        }
+                        {!props.selectedBranch?.label &&
+                        <h3 className=""><strong>{props.selectedBranch?.value } </strong></h3>
                         }
                         {brDataHtml}
                 </div>
