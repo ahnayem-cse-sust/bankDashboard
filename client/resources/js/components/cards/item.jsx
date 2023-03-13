@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from "axios";
 import Search from "../utils/search";
 import Moment from "moment";
+import BranchInfo from '../infoItems/branchInfo';
 
 const baseURL = "http://172.17.0.37/dashboard/dashboard/";
 
@@ -20,16 +21,25 @@ class Section extends Component {
 
       componentDidMount() {
         this.loadData(baseURL+'getDashboardinfo?&as_on='+this.state.selectDate);
+        let selObj = {};
+        selObj.label = '';
+        selObj.value = 'WHOLE BANK';
+        this.setState({ selected:selObj });
       };
 
       chooseBranch = (selObj) => {
         console.log(selObj);
-        this.setState({ selected:selObj });
         if(selObj){
             this.loadData(baseURL+'GetBrArDivData?br_code='+selObj.value+'&as_on='+this.state.selectDate);
         }else{
             this.loadData(baseURL+'getDashboardinfo?&as_on='+this.state.selectDate);
         }
+        if(selObj === null || selObj === undefined){
+            selObj = {};
+            selObj.label = '';
+            selObj.value = 'WHOLE BANK';
+        }
+        this.setState({ selected:selObj });
       };
 
       loadData = (url)=>{
@@ -56,8 +66,12 @@ class Section extends Component {
       selectDate = (selectedDate) => {
         console.log(selectedDate);
         this.setState({selectDate:Moment(selectedDate).format('YYYYMMDD')});
-        if(this.state.selected){
-            this.loadData(baseURL+'GetBrArDivData?br_code='+this.state.selected.value+'&as_on='+Moment(selectedDate).format('YYYYMMDD'));
+        let br_code = this.state.selected.value;
+        if(br_code = 'WHOLE BANK'){
+            br_code = '';
+        }
+        if(br_code){
+            this.loadData(baseURL+'GetBrArDivData?br_code='+br_code+'&as_on='+Moment(selectedDate).format('YYYYMMDD'));
         }else{
             this.loadData(baseURL+'getDashboardinfo?&as_on='+Moment(selectedDate).format('YYYYMMDD'));
         }
@@ -80,19 +94,10 @@ class Section extends Component {
     return (
             <div className="row">
                 
-                <Search chooseBranch={this.chooseBranch} selectDate={this.selectDate} />
-                {/* <Search /> */}            
+                <Search chooseBranch={this.chooseBranch} selectDate={this.selectDate} />        
 
+                <BranchInfo selectedBranch={this.state.selected} />
 
-                <div className="col-12 text-center br-name">   
-                         {this.state.selected &&
-                        <span className=""><strong>{this.state.selected?.value + '-' +
-                        this.state.selected?.label.slice(0,-5)} </strong></span>
-                        }
-                </div>
-
-
-                
                 <span className="figure-crore"><strong>Figure In Crore</strong></span>
                 <br />
                
@@ -104,7 +109,7 @@ class Section extends Component {
                     <div className="col-12 col-sm-6 col-md-3">
                     <div className="info-box">
 
-                    <span className="info-box-icon bg-info elevation-1"><i className="fa-solid fa-money-bill-transfer blackiconcolor"></i></span>
+                    <span className="info-box-icon bg-info elevation-1"><i className="fa fa-cubes blackiconcolor"></i></span>
 
                     <div className="info-box-content">
                         <span className="info-box-text">Asset/liability</span>
@@ -133,7 +138,7 @@ class Section extends Component {
                     <div className="col-12 col-sm-6 col-md-3">
                     <div className="info-box">
 
-                    <span className="info-box-icon2 bg-info elevation-1"><i className="fa-solid fa-money-bill-1-wave blackiconcolor"></i></span>
+                    <span className="info-box-icon4 bg-info elevation-1"><i className="fa-solid fa-money-bill-1-wave blackiconcolor"></i></span>
 
                     <div className="info-box-content">
                         <span className="info-box-text">LOAN & ADVANCE</span>
@@ -172,7 +177,7 @@ class Section extends Component {
                 <div className="col-12 col-sm-6 col-md-3">
                     <div className="info-box">
 
-                        <span className="info-box-icon4 bg-info elevation-1"><i className="far fa-money-bill-alt blackiconcolor"></i></span>
+                        <span className="info-box-icon2 bg-info elevation-1"><i className="far fa-money-bill-alt blackiconcolor"></i></span>
 
                         <div className="info-box-content">
                             <span className="info-box-text">INCOME</span>
