@@ -103,7 +103,7 @@ class Section extends Component {
                
 
                 
-                { this.state.loading && <div class="loader"></div>} 
+                { this.state.loading && <div className="loader"></div>} 
                 { !this.state.loading && 
                 <div>
                     <div className="col-12 col-sm-6 col-md-3">
