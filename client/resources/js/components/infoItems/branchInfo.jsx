@@ -38,7 +38,6 @@ const BranchInfo = (props) => {
                 .then(function (response) {
                     const data = JSON.parse(response.data);
                     setData(data);
-                  console.log(data);
                 });
         } catch (err) {
             setData(null);
@@ -50,9 +49,9 @@ const BranchInfo = (props) => {
     data.slice().reverse().forEach((d,i) => {
       // console.log(i);
         if(d.value>1 && i>0){
-              brDataHtml.push(<span className='br-count'>{d.label} : {d.value}   </span>)
+              brDataHtml.push(<span className='br-count' key={i}>{d.label} : {d.value}   </span>)
             } else if(d.value>1){
-              brDataHtml.push(<span className='br-count'>{d.label} : {d.value}   </span>)
+              brDataHtml.push(<span className='br-count' key={i}>{d.label} : {d.value}   </span>)
         }
     })
 

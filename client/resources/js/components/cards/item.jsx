@@ -28,7 +28,6 @@ class Section extends Component {
       };
 
       chooseBranch = (selObj) => {
-        console.log(selObj);
         if(selObj){
             this.loadData(baseURL+'GetBrArDivData?br_code='+selObj.value+'&as_on='+this.state.selectDate);
         }else{
@@ -58,13 +57,11 @@ class Section extends Component {
                 const data = JSON.parse(response.data);
                 const d = data[0];
               comp.setState({ data:d });
-              console.log(comp.state);
               comp.setState({ loading:false });
             });
       }
 
       selectDate = (selectedDate) => {
-        console.log(selectedDate);
         this.setState({selectDate:Moment(selectedDate).format('YYYYMMDD')});
         let br_code = this.state.selected.value;
         if(br_code = 'WHOLE BANK'){

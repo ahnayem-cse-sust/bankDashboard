@@ -33,6 +33,17 @@ class Search extends Component {
     }
 
     handleBranchChange = (selectedBr) => {
+      console.log(selectedBr);
+      this.props.chooseBranch(selectedBr);
+    };
+
+    handleAreaSelect = (selectedBr) => {
+      console.log(selectedBr);
+      this.props.chooseBranch(selectedBr);
+    };
+
+    handleBranchSelect = (selectedBr) => {
+      console.log(selectedBr);
       this.props.chooseBranch(selectedBr);
     };
 
@@ -40,16 +51,27 @@ class Search extends Component {
 
     return (
             <div className="row">
-              <br />
-              <div className='col-md-5'>
-
+              
+              <div className='col-md-3 col-sm-3'>
+                    {/* <div className='col-sm-4 col-md-4 label-div-select'> */}
+                      <label>Search for :</label>
+                    {/* </div>
+                    <div className='col-md-8 col-sm-4 div-select'> */}
+                      <Select
+                        className="basic-single"
+                        classNamePrefix="select"
+                        isDisabled={false}
+                        isLoading={false}
+                        isClearable={true}
+                        isSearchable={true}
+                        options={this.state.branchOptions}
+                        onChange={this.handleBranchChange}
+                      />
+                    {/* </div> */}
               </div>
-              <div className='col-md-4 col-sm 4'>
-                <div className='row'>
-                  <div className='col-sm-4 col-md-4 label-div-select'>
-                    <label>Search for :</label>
-                  </div>
-                  <div className='col-md-8 col-sm-4 div-select'>
+              
+              <div className='col-md-3 col-sm-3'>
+                    <label>Select Area :</label>
                     <Select
                       className="basic-single"
                       classNamePrefix="select"
@@ -58,27 +80,32 @@ class Search extends Component {
                       isClearable={true}
                       isSearchable={true}
                       options={this.state.branchOptions}
-                      onChange={this.handleBranchChange}
+                      onChange={this.handleAreaSelect}
                     />
-                  </div>
-                </div>
               </div>
               
-              <div className='col-md-3'>
-                <DatePicker selectDate={this.props.selectDate}  />
-              {/* <div className='row'>
-                  <div className='col-sm-4 col-md-4 label-div-select'>
-                    <label>Date:</label>
-                  </div>
-                  <div className='col-md-8 col-sm-8 div-select'>
-                    <DatePicker
-                    showIcon
-                    selected={this.state.startDate} 
-                    onChange={(date) => this.dateChange(date)} className='form-control' />
-                  </div>
-                  </div> */}
+              <div className='col-md-3 col-sm-3'>
+                <label>Select Branch :</label>
+                      <Select
+                        className="basic-single"
+                        classNamePrefix="select"
+                        isDisabled={false}
+                        isLoading={false}
+                        isClearable={true}
+                        isSearchable={true}
+                        options={this.state.branchOptions}
+                        onChange={this.handleBranchSelect}
+                      />
               </div>
-              <br />
+              
+              <div className='col-md-1 col-sm-1 padding-right-20px'>
+
+              </div>
+
+              <div className='col-md-2 col-sm-2 padding-right-20px'>
+                <DatePicker selectDate={this.props.selectDate}  />
+              </div>
+              
               <br />
               <br />
             </div>
