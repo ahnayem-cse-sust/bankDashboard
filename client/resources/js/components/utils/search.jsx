@@ -11,10 +11,13 @@ class Search extends Component {
     constructor(props) {
     super(props);
     this.state = {
-      branchOptions : [
-        
-      ],
-    };
+        divisionOptions : [],
+        areaOptions : [],
+        branchOptions : [],
+        selectedDivision: {},
+        selectedArea: null,
+        selectedBranch: {}
+      };
     }
 
     componentDidMount() {
@@ -25,26 +28,41 @@ class Search extends Component {
           responseType: 'stream'
         })
           .then(function (response) {
-              const data = JSON.parse(response.data);
-            comp.setState({ branchOptions:data });
-            // console.log(data);
+            const data = JSON.parse(response.data);
+            comp.setState({ divisionOptions:data });
           });
     
     }
 
-    handleBranchChange = (selectedBr) => {
-      console.log(selectedBr);
-      this.props.chooseBranch(selectedBr);
+    // handleBranchChange = (selectedBr) => {
+    //   console.log(selectedBr);
+    //   this.props.chooseBranch(selectedBr);
+    // };
+
+    handleDivisionChange = (selectedOpt) => {
+      console.log(selectedOpt);
+      this.props.chooseBranch(selectedOpt);
+      var comp = this;
+      comp.setState({ areaOptions: [] });
+      comp.setState({ branchOptions: [] });
+      axios.get(baseURL+'getBranches').then((response) => {
+        comp.setState({ areaOptions: response.data });
+      });
     };
 
-    handleAreaSelect = (selectedBr) => {
-      console.log(selectedBr);
-      this.props.chooseBranch(selectedBr);
+    handleAreaSelect = (selectedOpt) => {
+      console.log(selectedOpt);
+      this.props.chooseBranch(selectedOpt);
+      var comp = this;
+      comp.setState({ branchOptions: {} });
+      axios.get(baseURL+'getBranches').then((response) => {
+        comp.setState({ branchOptions: response.data });
+      });
     };
 
-    handleBranchSelect = (selectedBr) => {
-      console.log(selectedBr);
-      this.props.chooseBranch(selectedBr);
+    handleBranchSelect = (selectedOpt) => {
+      console.log(selectedOpt);
+      this.props.chooseBranch(selectedOpt);
     };
 
   render() {
@@ -54,7 +72,7 @@ class Search extends Component {
               
               <div className='col-md-3 col-sm-3'>
                     {/* <div className='col-sm-4 col-md-4 label-div-select'> */}
-                      <label>Search for :</label>
+                      <label>Select Division :</label>
                     {/* </div>
                     <div className='col-md-8 col-sm-4 div-select'> */}
                       <Select
@@ -64,8 +82,8 @@ class Search extends Component {
                         isLoading={false}
                         isClearable={true}
                         isSearchable={true}
-                        options={this.state.branchOptions}
-                        onChange={this.handleBranchChange}
+                        options={this.state.divisionOptions}
+                        onChange={this.handleDivisionChange}
                       />
                     {/* </div> */}
               </div>
@@ -79,7 +97,8 @@ class Search extends Component {
                       isLoading={false}
                       isClearable={true}
                       isSearchable={true}
-                      options={this.state.branchOptions}
+                      value={this.state.selectedArea}
+                      options={this.state.areaOptions}
                       onChange={this.handleAreaSelect}
                     />
               </div>
