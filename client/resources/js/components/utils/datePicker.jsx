@@ -15,10 +15,10 @@ const datePickerComp = (props) => {
 
   return (
     <div className="row">
-        <div className="col-sm-3 label-div-select" >
+        {/* <div className="col-sm-4 label-div-select" > */}
             <label>As On:</label>
-        </div>
-        <div className="col-sm-9 div-select">
+        {/* </div>
+        <div className="col-sm-8 div-select"> */}
             <DatePicker
             showIcon
             selected={startDate} 
@@ -27,7 +27,7 @@ const datePickerComp = (props) => {
             onChange={(date) => setStartDate(date)} 
             className='form-control'
             />
-        </div>
+        {/* </div> */}
     </div>
   );
 };
