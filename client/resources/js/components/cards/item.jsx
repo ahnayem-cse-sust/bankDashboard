@@ -257,7 +257,7 @@ class Section extends Component {
            
            
 
-                            <span className="info-box-text">DA ratio</span>
+                            <span className="info-box-text">A/D ratio</span>
                             <span className="info-box-number">
 
                             {/*(Math.round(this.state.data?.PROFIT * 100) / 100).toFixed(2)*/}
@@ -278,7 +278,7 @@ class Section extends Component {
            
            
 
-                            <span className="info-box-text">loan cl ratio</span>
+                            <span className="info-box-text">cl loan ratio</span>
                             <span className="info-box-number">
 
                             {/*(Math.round(this.state.data?.PROFIT * 100) / 100).toFixed(2)*/}
