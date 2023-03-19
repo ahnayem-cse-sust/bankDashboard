@@ -96,12 +96,8 @@ class Section extends Component {
                 
                 <Search chooseBranch={this.chooseBranch} selectDate={this.selectDate} />        
 
-                <BranchInfo selectedBranch={this.state.selected} />
-
-               
-                <br />
-               
-
+                <BranchInfo selectedBranch={this.state.selected} />               
+                <br /> 
                 
                 { this.state.loading && <div class="loader"></div>} 
                 { !this.state.loading && 
