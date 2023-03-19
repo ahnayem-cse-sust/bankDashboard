@@ -250,6 +250,116 @@ class Section extends Component {
                         </div>
                     </div>
                 </div>
+                <div className="col-12 col-sm-6 col-md-3">
+                    <div className="info-box">
+
+                        <span className="info-box-icon6 bg-info elevation-1 info-box-color"><i className="fa-solid fa-money-bill-trend-up blackiconcolor"></i></span>
+
+                        <div className="info-box-content">
+           
+           
+
+                            <span className="info-box-text">PROFIT/loss</span>
+                            <span className="info-box-number">
+
+                            {/*(Math.round(this.state.data?.PROFIT * 100) / 100).toFixed(2)*/}
+
+                             {this.numberFormatter(((this.state.data?.PROFIT * 100) / 100)/(10000000))} <span className="crore">Crore</span>
+                             
+
+                            {/* <small>%</small> */}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div className="col-12 col-sm-6 col-md-3">
+                    <div className="info-box">
+
+                        <span className="info-box-icon6 bg-info elevation-1"><i className="fa-solid fa-money-bill-trend-up blackiconcolor"></i></span>
+
+                        <div className="info-box-content">
+           
+           
+
+                            <span className="info-box-text">PROFIT/loss</span>
+                            <span className="info-box-number">
+
+                            {/*(Math.round(this.state.data?.PROFIT * 100) / 100).toFixed(2)*/}
+
+                             {this.numberFormatter(((this.state.data?.PROFIT * 100) / 100)/(10000000))} <span className="crore">Crore</span>
+                             
+
+                            {/* <small>%</small> */}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div className="col-12 col-sm-6 col-md-3">
+                    <div className="info-box">
+
+                        <span className="info-box-icon6 bg-info elevation-1"><i className="fa-solid fa-money-bill-trend-up blackiconcolor"></i></span>
+
+                        <div className="info-box-content">
+           
+           
+
+                            <span className="info-box-text">PROFIT/loss</span>
+                            <span className="info-box-number">
+
+                            {/*(Math.round(this.state.data?.PROFIT * 100) / 100).toFixed(2)*/}
+
+                             {this.numberFormatter(((this.state.data?.PROFIT * 100) / 100)/(10000000))} <span className="crore">Crore</span>
+                             
+
+                            {/* <small>%</small> */}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div className="col-12 col-sm-6 col-md-3">
+                    <div className="info-box">
+
+                        <span className="info-box-icon6 bg-info elevation-1"><i className="fa-solid fa-money-bill-trend-up blackiconcolor"></i></span>
+
+                        <div className="info-box-content">
+           
+           
+
+                            <span className="info-box-text">PROFIT/loss</span>
+                            <span className="info-box-number">
+
+                            {/*(Math.round(this.state.data?.PROFIT * 100) / 100).toFixed(2)*/}
+
+                             {this.numberFormatter(((this.state.data?.PROFIT * 100) / 100)/(10000000))} <span className="crore">Crore</span>
+                             
+
+                            {/* <small>%</small> */}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div className="col-12 col-sm-6 col-md-3">
+                    <div className="info-box">
+
+                        <span className="info-box-icon6 bg-info elevation-1"><i className="fa-solid fa-money-bill-trend-up blackiconcolor"></i></span>
+
+                        <div className="info-box-content">
+           
+           
+
+                            <span className="info-box-text">PROFIT/loss</span>
+                            <span className="info-box-number">
+
+                            {/*(Math.round(this.state.data?.PROFIT * 100) / 100).toFixed(2)*/}
+
+                             {this.numberFormatter(((this.state.data?.PROFIT * 100) / 100)/(10000000))} <span className="crore">Crore</span>
+                             
+
+                            {/* <small>%</small> */}
+                            </span>
+                        </div>
+                    </div>
+                </div>
                 </div>
                  }
             </div>      
