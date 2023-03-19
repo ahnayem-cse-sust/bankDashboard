@@ -40,9 +40,21 @@ class Search extends Component {
     // };
 
     handleDivisionChange = (selectedOpt) => {
-      this.selectAreaRef.current.clearValue();
-      this.selectBranchRef.current.clearValue();
+      
       var comp = this;
+      var promise = new Promise(function(resolve, reject) {
+        // call resolve if the method succeeds
+        comp.selectAreaRef.current.clearValue();
+        comp.selectBranchRef.current.clearValue();
+        console.log('promise');
+        resolve();
+      });
+      promise.then(()=>{
+        console.log('resolve 1');
+          comp.props.chooseBranch(selectedOpt);
+        }
+      );
+      
       comp.setState({ areaOptions: [] });
       comp.setState({ branchOptions: [] });
       if(selectedOpt != null){
@@ -50,10 +62,11 @@ class Search extends Component {
           comp.setState({ areaOptions: response.data });
         });
       }
-      this.props.chooseBranch(selectedOpt);
+      
     };
 
     handleAreaSelect = (selectedOpt) => {
+      console.log('resolve 44');
       this.selectBranchRef.current.clearValue();
       var comp = this;
       comp.setState({ branchOptions: [] });
@@ -63,12 +76,17 @@ class Search extends Component {
         });
       }
       selectedOpt = selectedOpt ? selectedOpt : this.selectDivRef.current.props.value;
-      this.props.chooseBranch(selectedOpt);
+      if(selectedOpt){
+        this.props.chooseBranch(selectedOpt);
+      }
     };
 
     handleBranchSelect = (selectedOpt) => {
+      console.log('resolve 33');
       selectedOpt = selectedOpt ? selectedOpt : this.selectAreaRef.current.props.value;
-      this.props.chooseBranch(selectedOpt);
+      if(selectedOpt){
+        this.props.chooseBranch(selectedOpt);
+      }
     };
 
   render() {
