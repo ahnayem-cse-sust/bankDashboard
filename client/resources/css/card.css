@@ -17,11 +17,25 @@
     font-size: 16px;
     padding-bottom: 0px;
     font-weight: 900;
-    text-transform: uppercase;
+    text-transform: lowercase;
 }
 
-.info-box-color{
+.box-color-daratio{
+    background: #FF8C00;   
+}
 
-    background: #DB7093;
-   
+.box-color-loancl{
+    background: #DEB887;
+}
+
+.box-color-export{
+    background: #7B68EE;
+}
+
+.box-color-import{
+    background: #F08080;
+}
+
+.box-color-fr-remitance{
+    background: #20B2AA;
 }
