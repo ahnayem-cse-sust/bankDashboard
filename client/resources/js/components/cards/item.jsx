@@ -28,6 +28,7 @@ class Section extends Component {
       };
 
       chooseBranch = (selObj) => {
+        console.log(selObj);
         if(selObj){
             this.loadData(baseURL+'GetBrArDivData?br_code='+selObj.value+'&as_on='+this.state.selectDate);
         }else{

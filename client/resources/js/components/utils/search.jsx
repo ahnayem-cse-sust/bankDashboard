@@ -1,4 +1,4 @@
-import React, { Component, useState  } from 'react';
+import React, { Component } from 'react';
 import Select from 'react-select';
 import axios from "axios";
 import DatePicker from "../utils/datePicker";
@@ -13,18 +13,18 @@ class Search extends Component {
     this.state = {
         divisionOptions : [],
         areaOptions : [],
-        branchOptions : [],
-        selectedDivision: {},
-        selectedArea: null,
-        selectedBranch: {}
+        branchOptions : []
       };
+    this.selectDivRef = React.createRef();
+    this.selectAreaRef = React.createRef();
+    this.selectBranchRef = React.createRef();
     }
 
     componentDidMount() {
       var comp = this;
       axios({
           method: 'get',
-          url: baseURL+'getBranches',
+          url: baseURL+'getdivisions',
           responseType: 'stream'
         })
           .then(function (response) {
@@ -40,28 +40,34 @@ class Search extends Component {
     // };
 
     handleDivisionChange = (selectedOpt) => {
-      console.log(selectedOpt);
-      this.props.chooseBranch(selectedOpt);
+      this.selectAreaRef.current.clearValue();
+      this.selectBranchRef.current.clearValue();
       var comp = this;
       comp.setState({ areaOptions: [] });
       comp.setState({ branchOptions: [] });
-      axios.get(baseURL+'getBranches').then((response) => {
-        comp.setState({ areaOptions: response.data });
-      });
+      if(selectedOpt != null){
+        axios.get(baseURL+'getareas?div_code='+selectedOpt.value).then((response) => {
+          comp.setState({ areaOptions: response.data });
+        });
+      }
+      this.props.chooseBranch(selectedOpt);
     };
 
     handleAreaSelect = (selectedOpt) => {
-      console.log(selectedOpt);
-      this.props.chooseBranch(selectedOpt);
+      this.selectBranchRef.current.clearValue();
       var comp = this;
-      comp.setState({ branchOptions: {} });
-      axios.get(baseURL+'getBranches').then((response) => {
-        comp.setState({ branchOptions: response.data });
-      });
+      comp.setState({ branchOptions: [] });
+      if(selectedOpt != null){
+        axios.get(baseURL+'getbranchesbyarea?ar_code='+selectedOpt.value).then((response) => {
+          comp.setState({ branchOptions: response.data });
+        });
+      }
+      selectedOpt = selectedOpt ? selectedOpt : this.selectDivRef.current.props.value;
+      this.props.chooseBranch(selectedOpt);
     };
 
     handleBranchSelect = (selectedOpt) => {
-      console.log(selectedOpt);
+      selectedOpt = selectedOpt ? selectedOpt : this.selectAreaRef.current.props.value;
       this.props.chooseBranch(selectedOpt);
     };
 
@@ -76,6 +82,7 @@ class Search extends Component {
                     {/* </div>
                     <div className='col-md-8 col-sm-4 div-select'> */}
                       <Select
+                        ref={this.selectDivRef}
                         className="basic-single"
                         classNamePrefix="select"
                         isDisabled={false}
@@ -91,13 +98,13 @@ class Search extends Component {
               <div className='col-md-3 col-sm-3'>
                     <label>Select Area :</label>
                     <Select
+                      ref={this.selectAreaRef}
                       className="basic-single"
                       classNamePrefix="select"
                       isDisabled={false}
                       isLoading={false}
                       isClearable={true}
                       isSearchable={true}
-                      value={this.state.selectedArea}
                       options={this.state.areaOptions}
                       onChange={this.handleAreaSelect}
                     />
@@ -106,6 +113,7 @@ class Search extends Component {
               <div className='col-md-3 col-sm-3'>
                 <label>Select Branch :</label>
                       <Select
+                        ref={this.selectBranchRef}
                         className="basic-single"
                         classNamePrefix="select"
                         isDisabled={false}
