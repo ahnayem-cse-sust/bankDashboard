@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>JBL DASHBOARD</title>
+  <title>Janata Dashboard</title>
   <link rel="icon" type="image/png" href="{{ admin_asset("vendor/laravel-admin/AdminLTE/dist/img/Janata_Bank.png") }}">
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -22,7 +22,8 @@
   <link rel="stylesheet" href="{{ admin_asset("vendor/laravel-admin/AdminLTE/dist/css/AdminLTE.min.css") }}">
   <!-- iCheck -->
   <link rel="stylesheet" href="{{ admin_asset("vendor/laravel-admin/AdminLTE/plugins/iCheck/square/blue.css") }}">
-
+  <!-- janata logo -->
+  <link rel="stylesheet" href="{{ admin_asset("vendor/laravel-admin/AdminLTE/dist/css/loginpage.css") }}">
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -31,10 +32,15 @@
   <![endif]-->
 </head>
 <body class="hold-transition login-page" @if(config('admin.login_background_image'))style="background: url({{config('admin.login_background_image')}}) no-repeat;background-size: cover;"@endif>
+<div class="janataLogo-box">
+      <img src="{{ admin_asset("vendor/laravel-admin/AdminLTE/dist/img/loginLogo.png") }}" alt="Janata Bank Limited"> 
+  </div>
+
 <div class="login-box">
+ 
   <div class="login-logo">
   <!--   <a href="{{ admin_url('/') }}"><b>{{config('admin.name')}}</b></a> -->
-    <a href="{{ admin_url('/') }}"><b>JBL DASHBOARD</b></a>
+    <a href="{{ admin_url('/') }}"><b>Janata Dashboard</b></a>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
@@ -82,11 +88,16 @@
         <!-- /.col -->
       </div>
     </form>
-
+   
   </div>
   <!-- /.login-box-body -->
+  
 </div>
 <!-- /.login-box -->
+<div class="footer-logo">
+      <img src="{{ admin_asset("vendor/laravel-admin/AdminLTE/dist/img/graphical_line.png") }}" alt="Janata Bank Limited"> 
+  </div>
+
 
 <!-- jQuery 2.1.4 -->
 <script src="{{ admin_asset("vendor/laravel-admin/AdminLTE/plugins/jQuery/jQuery-2.1.4.min.js")}}"></script>

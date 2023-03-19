@@ -58,13 +58,11 @@ class Section extends Component {
                 const data = JSON.parse(response.data);
                 const d = data[0];
               comp.setState({ data:d });
-              console.log(comp.state);
               comp.setState({ loading:false });
             });
       }
 
       selectDate = (selectedDate) => {
-        console.log(selectedDate);
         this.setState({selectDate:Moment(selectedDate).format('YYYYMMDD')});
         let br_code = this.state.selected.value;
         if(br_code = 'WHOLE BANK'){
@@ -99,7 +97,7 @@ class Section extends Component {
                 <BranchInfo selectedBranch={this.state.selected} />               
                 <br /> 
                 
-                { this.state.loading && <div class="loader"></div>} 
+                { this.state.loading && <div className="loader"></div>} 
                 { !this.state.loading && 
                 <div>
                     <div className="col-12 col-sm-6 col-md-3">

@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="renderer" content="webkit">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title style="text-transform:uppercase;">JBL DASHBOARD</title>
+    <title style="text-transform:uppercase;">Janata Dashboard</title>
      <link rel="icon" type="image/png" href="{{ admin_asset("vendor/laravel-admin/AdminLTE/dist/img/Janata_Bank.png") }}">
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
