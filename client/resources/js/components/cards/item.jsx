@@ -96,11 +96,8 @@ class Section extends Component {
                 
                 <Search chooseBranch={this.chooseBranch} selectDate={this.selectDate} />        
 
-                <BranchInfo selectedBranch={this.state.selected} />
-
-                <span className="figure-crore"><strong>Figure In Crore</strong></span>
-                <br />
-               
+                <BranchInfo selectedBranch={this.state.selected} />               
+                <br />            
 
                 
                 { this.state.loading && <div class="loader"></div>} 
@@ -114,7 +111,7 @@ class Section extends Component {
                     <div className="info-box-content">
                         <span className="info-box-text">Asset/liability</span>
                         <span className="info-box-number">
-                        {this.numberFormatter(((this.state.data?.ASSET * 100) / 100)/(10000000))}
+                        {this.numberFormatter(((this.state.data?.ASSET * 100) / 100)/(10000000))} <span className="crore">Crore</span>
                         </span>
                     </div>
                     </div>
@@ -130,7 +127,7 @@ class Section extends Component {
                         <span className="info-box-text">deposit</span>
                         <span className="info-box-number">
                         {/* {((Math.round(this.state.data?.DEPOSIT * 100) / 100)/(10000000)).toFixed(2)} */}
-                        {this.numberFormatter(((this.state.data?.DEPOSIT * 100) / 100)/(10000000))}
+                        {this.numberFormatter(((this.state.data?.DEPOSIT * 100) / 100)/(10000000))} <span className="crore">Crore</span>
                         </span>
                     </div>
                     </div>
@@ -146,7 +143,7 @@ class Section extends Component {
 
                         {/*(Math.round(this.state.data?.ADVANCE * 100) / 100).toFixed(2)*/}
 
-                        {this.numberFormatter(((this.state.data?.ADVANCE * 100) / 100)/(10000000))}
+                        {this.numberFormatter(((this.state.data?.ADVANCE * 100) / 100)/(10000000))} <span className="crore">Crore</span>
 
                         {/* <small>%</small> */}
                         </span>
@@ -166,7 +163,8 @@ class Section extends Component {
 
                             {/*(Math.round(this.state.data?.CL_BALANCE * 100) / 100).toFixed(2)*/}
 
-                              {this.numberFormatter(((this.state.data?.CL_BALANCE * 100) / 100)/(10000000))}
+                              {this.numberFormatter(((this.state.data?.CL_BALANCE * 100) / 100)/(10000000))} <span className="crore">Crore</span>
+                             
 
                             {/* <small>%</small> */}
                             </span>
@@ -185,7 +183,8 @@ class Section extends Component {
 
                             {/* (Math.round(this.state.data?.INCOME * 100) / 100).toFixed(2)*/}
 
-                                {this.numberFormatter(((this.state.data?.INCOME * 100) / 100)/(10000000))}
+                                {this.numberFormatter(((this.state.data?.INCOME * 100) / 100)/(10000000))} <span className="crore">Crore</span>
+                                
 
                             {/* <small>%</small> */}
                             </span>
@@ -204,7 +203,8 @@ class Section extends Component {
                             {/*(Math.round(this.state.data?.EXPENDITURE * 100) / 100).toFixed(2)*/}
 
 
-                           {this.numberFormatter(((this.state.data?.EXPENDITURE * 100) / 100)/(10000000))}
+                           {this.numberFormatter(((this.state.data?.EXPENDITURE * 100) / 100)/(10000000))} <span className="crore">Crore</span>
+                          
 
                             {/* <small>%</small> */}
                             </span>
@@ -225,7 +225,8 @@ class Section extends Component {
 
                             {/*(Math.round(this.state.data?.PROFIT * 100) / 100).toFixed(2)*/}
 
-                             {this.numberFormatter(((this.state.data?.PROFIT * 100) / 100)/(10000000))}
+                             {this.numberFormatter(((this.state.data?.PROFIT * 100) / 100)/(10000000))} <span className="crore">Crore</span>
+                             
 
                             {/* <small>%</small> */}
                             </span>
@@ -248,6 +249,81 @@ class Section extends Component {
 
                             </span>
                         </div>
+                    </div>
+                </div>
+                <div className="col-12 col-sm-6 col-md-3">
+                    <div className="info-box">
+
+                    <span className="info-box-icon1 bg-info elevation-1"><i className="fa-solid fa-bangladeshi-taka-sign blackiconcolor"></i></span>
+
+
+                    <div className="info-box-content">
+                        <span className="info-box-text">deposit</span>
+                        <span className="info-box-number">
+                        {/* {((Math.round(this.state.data?.DEPOSIT * 100) / 100)/(10000000)).toFixed(2)} */}
+                        {this.numberFormatter(((this.state.data?.DEPOSIT * 100) / 100)/(10000000))} <span className="crore">Crore</span>
+                        </span>
+                    </div>
+                    </div>
+                </div>
+                <div className="col-12 col-sm-6 col-md-3">
+                    <div className="info-box">
+
+                    <span className="info-box-icon1 bg-info elevation-1"><i className="fa-solid fa-bangladeshi-taka-sign blackiconcolor"></i></span>
+
+
+                    <div className="info-box-content">
+                        <span className="info-box-text">deposit</span>
+                        <span className="info-box-number">
+                        {/* {((Math.round(this.state.data?.DEPOSIT * 100) / 100)/(10000000)).toFixed(2)} */}
+                        {this.numberFormatter(((this.state.data?.DEPOSIT * 100) / 100)/(10000000))} <span className="crore">Crore</span>
+                        </span>
+                    </div>
+                    </div>
+                </div>
+                <div className="col-12 col-sm-6 col-md-3">
+                    <div className="info-box">
+
+                    <span className="info-box-icon1 bg-info elevation-1"><i className="fa-solid fa-bangladeshi-taka-sign blackiconcolor"></i></span>
+
+
+                    <div className="info-box-content">
+                        <span className="info-box-text">deposit</span>
+                        <span className="info-box-number">
+                        {/* {((Math.round(this.state.data?.DEPOSIT * 100) / 100)/(10000000)).toFixed(2)} */}
+                        {this.numberFormatter(((this.state.data?.DEPOSIT * 100) / 100)/(10000000))} <span className="crore">Crore</span>
+                        </span>
+                    </div>
+                    </div>
+                </div>
+                <div className="col-12 col-sm-6 col-md-3">
+                    <div className="info-box">
+
+                    <span className="info-box-icon1 bg-info elevation-1"><i className="fa-solid fa-bangladeshi-taka-sign blackiconcolor"></i></span>
+
+
+                    <div className="info-box-content">
+                        <span className="info-box-text">deposit</span>
+                        <span className="info-box-number">
+                        {/* {((Math.round(this.state.data?.DEPOSIT * 100) / 100)/(10000000)).toFixed(2)} */}
+                        {this.numberFormatter(((this.state.data?.DEPOSIT * 100) / 100)/(10000000))} <span className="crore">Crore</span>
+                        </span>
+                    </div>
+                    </div>
+                </div>
+                <div className="col-12 col-sm-6 col-md-3">
+                    <div className="info-box">
+
+                    <span className="info-box-icon1 bg-info elevation-1"><i className="fa-solid fa-bangladeshi-taka-sign blackiconcolor"></i></span>
+
+
+                    <div className="info-box-content">
+                        <span className="info-box-text">deposit</span>
+                        <span className="info-box-number">
+                        {/* {((Math.round(this.state.data?.DEPOSIT * 100) / 100)/(10000000)).toFixed(2)} */}
+                        {this.numberFormatter(((this.state.data?.DEPOSIT * 100) / 100)/(10000000))} <span className="crore">Crore</span>
+                        </span>
+                    </div>
                     </div>
                 </div>
                 </div>
