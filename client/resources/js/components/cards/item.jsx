@@ -10,42 +10,50 @@ const baseURL = "http://172.17.0.37/dashboard/dashboard/";
 
 class Section extends Component {
 
-
-
     state = {
         selected : null,
-        selectDate : Moment('20230228').format('YYYYMMDD'),
+        selectDate : Moment().format('YYYYMMDD'),
         loading : true
-
       };
 
       componentDidMount() {
-        this.loadData(baseURL+'getDashboardinfo?&as_on='+this.state.selectDate);
-        let selObj = {};
-        selObj.label = '';
-        selObj.value = 'WHOLE BANK';
-        this.setState({ selected:selObj });
+        var thisObj = this;
+        let loadDataObj = thisObj.loadData(baseURL+'getDashboardinfo?&as_on='+this.state.selectDate);
+        loadDataObj.then((response)=>{
+            thisObj.setData(response).then(()=>{
+                thisObj.setState({ loading : false });
+                let selObj = {};
+                selObj.label = '';
+                selObj.value = 'WHOLE BANK';
+                thisObj.setState({ selected:selObj });
+            })
+        });
       };
 
       chooseBranch = (selObj) => {
-        console.log(selObj);
+        var thisObj = this;
+        thisObj.setState({ loading : true });
+        let loadDataObj;
         if(selObj){
-            this.loadData(baseURL+'GetBrArDivData?br_code='+selObj.value+'&as_on='+this.state.selectDate);
+            loadDataObj = thisObj.loadData(baseURL+'GetBrArDivData?br_code='+selObj.value+'&as_on='+this.state.selectDate);
         }else{
-            this.loadData(baseURL+'getDashboardinfo?&as_on='+this.state.selectDate);
+            loadDataObj = thisObj.loadData(baseURL+'getDashboardinfo?&as_on='+thisObj.state.selectDate);
         }
-        if(selObj === null || selObj === undefined){
-            selObj = {};
-            selObj.label = '';
-            selObj.value = 'WHOLE BANK';
-        }
-        this.setState({ selected:selObj });
+        loadDataObj.then((response)=>{
+            thisObj.setData(response).then(()=>{
+                thisObj.setState({ loading : false });
+                if(selObj === null || selObj === undefined){
+                    selObj = {};
+                    selObj.label = '';
+                    selObj.value = 'WHOLE BANK';
+                }
+                this.setState({ selected : selObj });
+            })
+        });
       };
 
       loadData = (url)=>{
-        var comp = this;
-        this.setState({ loading:true });
-        axios({
+        return axios({
             method: 'get',
             url: url,
             headers: { 
@@ -53,26 +61,42 @@ class Section extends Component {
                 'Access-Control-Allow-Origin': '*'
                 },
             responseType: 'stream'
-          })
-            .then(function (response) {
+          });
+      }
+
+      setData = (response) =>{
+        var thisObj = this;
+        let myPromise = new Promise(function(myResolve, myReject) {
                 const data = JSON.parse(response.data);
-                const d = data[0];
-              comp.setState({ data:d });
-              comp.setState({ loading:false });
+                const d = data[0];  
+                thisObj.setState({ data:d });
+                myResolve(); 
+                myReject('Error occured on setting the data.'); 
             });
+        return myPromise;
       }
 
       selectDate = (selectedDate) => {
-        this.setState({selectDate:Moment(selectedDate).format('YYYYMMDD')});
-        let br_code = this.state.selected.value;
+        var thisObj = this;
+        thisObj.setState({ loading : true });
+        thisObj.setState({selectDate:Moment(selectedDate).format('YYYYMMDD')});
+        thisObj.setState({ loading:true });
+        let br_code = thisObj.state.selected.value;
         if(br_code = 'WHOLE BANK'){
             br_code = '';
         }
+        let loadDataObj;
         if(br_code){
-            this.loadData(baseURL+'GetBrArDivData?br_code='+br_code+'&as_on='+Moment(selectedDate).format('YYYYMMDD'));
+            loadDataObj = thisObj.loadData(baseURL+'GetBrArDivData?br_code='+br_code+'&as_on='+Moment(selectedDate).format('YYYYMMDD'));
         }else{
-            this.loadData(baseURL+'getDashboardinfo?&as_on='+Moment(selectedDate).format('YYYYMMDD'));
+            loadDataObj = thisObj.loadData(baseURL+'getDashboardinfo?&as_on='+Moment(selectedDate).format('YYYYMMDD'));
         }
+        loadDataObj.then((response)=>{
+            console.log(response);
+            thisObj.setData(response).then(()=>{
+                thisObj.setState({ loading : false });
+            })
+        });
       }
 
     numberFormatter = (value) => {
