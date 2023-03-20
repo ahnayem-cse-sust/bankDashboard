@@ -28,3 +28,30 @@
     font-size: 17px;
 }
 
+
+.crore{
+    font-size: 16px;
+    padding-bottom: 0px;
+    font-weight: 900;
+    text-transform: lowercase;
+}
+
+.box-color-daratio{
+    background: #FF8C00;   
+}
+
+.box-color-loancl{
+    background: #DEB887;
+}
+
+.box-color-export{
+    background: #7B68EE;
+}
+
+.box-color-import{
+    background: #F08080;
+}
+
+.box-color-fr-remitance{
+    background: #20B2AA;
+}

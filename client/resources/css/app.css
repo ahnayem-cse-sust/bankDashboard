@@ -50,7 +50,11 @@
     padding-top: 0px;
     padding-bottom: 20px;
     padding-right: 10px;
+    font-weight: bold;
+    color: #9400D3;
+    
   }
+  
 
   .janataLogo-box{
     width:360px;

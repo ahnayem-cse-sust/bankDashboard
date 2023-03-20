@@ -12,42 +12,50 @@ const baseURL = "http://172.17.0.37/dashboard/dashboard/";
 
 class Section extends Component {
 
-
-
     state = {
         selected : null,
         selectDate : Moment('20230228').format('YYYYMMDD'),
         loading : true
-
       };
 
       componentDidMount() {
-        this.loadData(baseURL+'getDashboardinfo?&as_on='+this.state.selectDate);
-        let selObj = {};
-        selObj.label = '';
-        selObj.value = 'WHOLE BANK';
-        this.setState({ selected:selObj });
+        var thisObj = this;
+        let loadDataObj = thisObj.loadData(baseURL+'getDashboardinfo?&as_on='+this.state.selectDate);
+        loadDataObj.then((response)=>{
+            thisObj.setData(response).then(()=>{
+                thisObj.setState({ loading : false });
+                let selObj = {};
+                selObj.label = '';
+                selObj.value = 'WHOLE BANK';
+                thisObj.setState({ selected:selObj });
+            })
+        });
       };
 
       chooseBranch = (selObj) => {
-        console.log(selObj);
+        var thisObj = this;
+        thisObj.setState({ loading : true });
+        let loadDataObj;
         if(selObj){
-            this.loadData(baseURL+'GetBrArDivData?br_code='+selObj.value+'&as_on='+this.state.selectDate);
+            loadDataObj = thisObj.loadData(baseURL+'GetBrArDivData?br_code='+selObj.value+'&as_on='+this.state.selectDate);
         }else{
-            this.loadData(baseURL+'getDashboardinfo?&as_on='+this.state.selectDate);
+            loadDataObj = thisObj.loadData(baseURL+'getDashboardinfo?&as_on='+this.state.selectDate);
         }
-        if(selObj === null || selObj === undefined){
-            selObj = {};
-            selObj.label = '';
-            selObj.value = 'WHOLE BANK';
-        }
-        this.setState({ selected:selObj });
+        loadDataObj.then((response)=>{
+            thisObj.setData(response).then(()=>{
+                thisObj.setState({ loading : false });
+                if(selObj === null || selObj === undefined){
+                    selObj = {};
+                    selObj.label = '';
+                    selObj.value = 'WHOLE BANK';
+                }
+                this.setState({ selected : selObj });
+            })
+        });
       };
 
       loadData = (url)=>{
-        var comp = this;
-        this.setState({ loading:true });
-        axios({
+        return axios({
             method: 'get',
             url: url,
             headers: { 
@@ -55,26 +63,42 @@ class Section extends Component {
                 'Access-Control-Allow-Origin': '*'
                 },
             responseType: 'stream'
-          })
-            .then(function (response) {
+          });
+      }
+
+      setData = (response) =>{
+        var thisObj = this;
+        let myPromise = new Promise(function(myResolve, myReject) {
                 const data = JSON.parse(response.data);
-                const d = data[0];
-              comp.setState({ data:d });
-              comp.setState({ loading:false });
+                const d = data[0];  
+                thisObj.setState({ data:d });
+                myResolve(); 
+                myReject('Error occured on setting the data.'); 
             });
+        return myPromise;
       }
 
       selectDate = (selectedDate) => {
-        this.setState({selectDate:Moment(selectedDate).format('YYYYMMDD')});
-        let br_code = this.state.selected.value;
+        var thisObj = this;
+        thisObj.setState({ loading : true });
+        thisObj.setState({selectDate:Moment(selectedDate).format('YYYYMMDD')});
+        thisObj.setState({ loading:true });
+        let br_code = thisObj.state.selected.value;
         if(br_code = 'WHOLE BANK'){
             br_code = '';
         }
+        let loadDataObj;
         if(br_code){
-            this.loadData(baseURL+'GetBrArDivData?br_code='+br_code+'&as_on='+Moment(selectedDate).format('YYYYMMDD'));
+            loadDataObj = thisObj.loadData(baseURL+'GetBrArDivData?br_code='+br_code+'&as_on='+Moment(selectedDate).format('YYYYMMDD'));
         }else{
-            this.loadData(baseURL+'getDashboardinfo?&as_on='+Moment(selectedDate).format('YYYYMMDD'));
+            loadDataObj = thisObj.loadData(baseURL+'getDashboardinfo?&as_on='+Moment(selectedDate).format('YYYYMMDD'));
         }
+        loadDataObj.then((response)=>{
+            console.log(response);
+            thisObj.setData(response).then(()=>{
+                thisObj.setState({ loading : false });
+            })
+        });
       }
 
     numberFormatter = (value) => {
@@ -96,12 +120,8 @@ class Section extends Component {
                 
                 <Search chooseBranch={this.chooseBranch} selectDate={this.selectDate} />        
 
-                <BranchInfo selectedBranch={this.state.selected} />
-
-                <span className="figure-crore"><strong>Figure In Crore</strong></span>
-                <br />
-               
-
+                <BranchInfo selectedBranch={this.state.selected} />               
+                <br /> 
                 
                 { this.state.loading && <div className="loader"></div>} 
                 { !this.state.loading && 
@@ -114,7 +134,7 @@ class Section extends Component {
                     <div className="info-box-content">
                         <span className="info-box-text">Asset/liability</span>
                         <span className="info-box-number">
-                        {this.numberFormatter(((this.state.data?.ASSET * 100) / 100)/(10000000))}
+                        {this.numberFormatter(((this.state.data?.ASSET * 100) / 100)/(10000000))} <span className="crore">Crore</span>
                         </span>
                     </div>
                     </div>
@@ -142,7 +162,7 @@ class Section extends Component {
                     </Popup>
                         <span className="info-box-number">
                         {/* {((Math.round(this.state.data?.DEPOSIT * 100) / 100)/(10000000)).toFixed(2)} */}
-                        {this.numberFormatter(((this.state.data?.DEPOSIT * 100) / 100)/(10000000))}
+                        {this.numberFormatter(((this.state.data?.DEPOSIT * 100) / 100)/(10000000))} <span className="crore">Crore</span>
                         </span>
                     </div>
                     </div>
@@ -158,7 +178,7 @@ class Section extends Component {
 
                         {/*(Math.round(this.state.data?.ADVANCE * 100) / 100).toFixed(2)*/}
 
-                        {this.numberFormatter(((this.state.data?.ADVANCE * 100) / 100)/(10000000))}
+                        {this.numberFormatter(((this.state.data?.ADVANCE * 100) / 100)/(10000000))} <span className="crore">Crore</span>
 
                         {/* <small>%</small> */}
                         </span>
@@ -178,7 +198,8 @@ class Section extends Component {
 
                             {/*(Math.round(this.state.data?.CL_BALANCE * 100) / 100).toFixed(2)*/}
 
-                              {this.numberFormatter(((this.state.data?.CL_BALANCE * 100) / 100)/(10000000))}
+                              {this.numberFormatter(((this.state.data?.CL_BALANCE * 100) / 100)/(10000000))} <span className="crore">Crore</span>
+                             
 
                             {/* <small>%</small> */}
                             </span>
@@ -197,7 +218,8 @@ class Section extends Component {
 
                             {/* (Math.round(this.state.data?.INCOME * 100) / 100).toFixed(2)*/}
 
-                                {this.numberFormatter(((this.state.data?.INCOME * 100) / 100)/(10000000))}
+                                {this.numberFormatter(((this.state.data?.INCOME * 100) / 100)/(10000000))} <span className="crore">Crore</span>
+                                
 
                             {/* <small>%</small> */}
                             </span>
@@ -216,7 +238,8 @@ class Section extends Component {
                             {/*(Math.round(this.state.data?.EXPENDITURE * 100) / 100).toFixed(2)*/}
 
 
-                           {this.numberFormatter(((this.state.data?.EXPENDITURE * 100) / 100)/(10000000))}
+                           {this.numberFormatter(((this.state.data?.EXPENDITURE * 100) / 100)/(10000000))} <span className="crore">Crore</span>
+                          
 
                             {/* <small>%</small> */}
                             </span>
@@ -237,7 +260,8 @@ class Section extends Component {
 
                             {/*(Math.round(this.state.data?.PROFIT * 100) / 100).toFixed(2)*/}
 
-                             {this.numberFormatter(((this.state.data?.PROFIT * 100) / 100)/(10000000))}
+                             {this.numberFormatter(((this.state.data?.PROFIT * 100) / 100)/(10000000))} <span className="crore">Crore</span>
+                             
 
                             {/* <small>%</small> */}
                             </span>
@@ -262,8 +286,114 @@ class Section extends Component {
                         </div>
                     </div>
                 </div>
-                <div>          
-        
+                <div className="col-12 col-sm-6 col-md-3">
+                    <div className="info-box">
+
+                        <span className="info-box-icon6 bg-info elevation-1 box-color-daratio"><i className="fa-solid fa-percent blackiconcolor"></i></span>
+
+                        <div className="info-box-content">
+           
+           
+
+                            <span className="info-box-text">A/D ratio</span>
+                            <span className="info-box-number">
+
+                            {/*(Math.round(this.state.data?.PROFIT * 100) / 100).toFixed(2)*/}
+
+                             {(this.state.data?.DA_RATIO)}                              
+
+                            {/* <small>%</small> */}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div className="col-12 col-sm-6 col-md-3">
+                    <div className="info-box">
+
+                        <span className="info-box-icon6 bg-info elevation-1 box-color-loancl"><i className="fa-solid fa-landmark blackiconcolor"></i></span>
+
+                        <div className="info-box-content">
+           
+           
+
+                            <span className="info-box-text">cl loan ratio</span>
+                            <span className="info-box-number">
+
+                            {/*(Math.round(this.state.data?.PROFIT * 100) / 100).toFixed(2)*/}
+
+                             {(this.state.data?.LOAN_CL_RATIO)}
+                             
+
+                            {/* <small>%</small> */}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div className="col-12 col-sm-6 col-md-3">
+                    <div className="info-box">
+
+                        <span className="info-box-icon6 bg-info elevation-1 box-color-export"><i className="fas fa-file-export blackiconcolor"></i></span>
+
+                        <div className="info-box-content">
+           
+           
+
+                            <span className="info-box-text">export</span>
+                            <span className="info-box-number">
+
+                            {/*(Math.round(this.state.data?.PROFIT * 100) / 100).toFixed(2)*/}
+
+                             {this.numberFormatter(((this.state.data?.EXPORT * 100) / 100)/(10000000))} <span className="crore">Crore</span>
+                             
+
+                            {/* <small>%</small> */}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div className="col-12 col-sm-6 col-md-3">
+                    <div className="info-box">
+
+                        <span className="info-box-icon6 bg-info elevation-1 box-color-import"><i className="fas fa-file-import blackiconcolor"></i></span>
+
+                        <div className="info-box-content">
+           
+           
+
+                            <span className="info-box-text">import</span>
+                            <span className="info-box-number">
+
+                            {/*(Math.round(this.state.data?.PROFIT * 100) / 100).toFixed(2)*/}
+
+                             {this.numberFormatter(((this.state.data?.IMPORT * 100) / 100)/(10000000))} <span className="crore">Crore</span>
+                             
+
+                            {/* <small>%</small> */}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div className="col-12 col-sm-6 col-md-3">
+                    <div className="info-box">
+
+                        <span className="info-box-icon6 bg-info elevation-1 box-color-fr-remitance"><i className="fas fa-sort-amount-up-alt blackiconcolor"></i></span>
+
+                        <div className="info-box-content">
+           
+           
+
+                            <span className="info-box-text">fr remittence</span>
+                            <span className="info-box-number">
+
+                            {/*(Math.round(this.state.data?.PROFIT * 100) / 100).toFixed(2)*/}
+
+                             {this.numberFormatter(((this.state.data?.FR_REMITTANCE * 100) / 100)/(10000000))} <span className="crore">Crore</span>
+                             
+
+                            {/* <small>%</small> */}
+                            </span>
+                        </div>
+                    </div>
                 </div>
                 </div>
                  }
