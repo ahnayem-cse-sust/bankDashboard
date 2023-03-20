@@ -13,7 +13,10 @@ class Search extends Component {
     this.state = {
         divisionOptions : [],
         areaOptions : [],
-        branchOptions : []
+        branchOptions : [],
+        selectedDivision : null,
+        selectedArea : null,
+        selectedBranch : null
       };
     this.selectDivRef = React.createRef();
     this.selectAreaRef = React.createRef();
@@ -21,7 +24,7 @@ class Search extends Component {
     }
 
     componentDidMount() {
-      var comp = this;
+      var thisObj = this;
       axios({
           method: 'get',
           url: baseURL+'getdivisions',
@@ -29,63 +32,58 @@ class Search extends Component {
         })
           .then(function (response) {
             const data = JSON.parse(response.data);
-            comp.setState({ divisionOptions:data });
+            thisObj.setState({ divisionOptions:data });
           });
     
     }
 
-    // handleBranchChange = (selectedBr) => {
-    //   console.log(selectedBr);
-    //   this.props.chooseBranch(selectedBr);
-    // };
-
     handleDivisionChange = (selectedOpt) => {
-      
-      var comp = this;
-      var promise = new Promise(function(resolve, reject) {
-        // call resolve if the method succeeds
-        comp.selectAreaRef.current.clearValue();
-        comp.selectBranchRef.current.clearValue();
-        console.log('promise');
-        resolve();
-      });
-      promise.then(()=>{
-        console.log('resolve 1');
-          comp.props.chooseBranch(selectedOpt);
-        }
-      );
-      
-      comp.setState({ areaOptions: [] });
-      comp.setState({ branchOptions: [] });
-      if(selectedOpt != null){
+      var thisObj = this;
+      thisObj.setState({ selectedDivision : selectedOpt });
+      thisObj.selectAreaRef.current.clearValue();
+      thisObj.selectBranchRef.current.clearValue();
+      thisObj.setState({ branchOptions: [] });
+      if(selectedOpt){
         axios.get(baseURL+'getareas?div_code='+selectedOpt.value).then((response) => {
-          comp.setState({ areaOptions: response.data });
-        });
+          thisObj.setState({ areaOptions: response.data });
+        }).catch((err)=>{
+          console.log(err);
+          thisObj.setState({ areaOptions: [] });
+        }).finally(()=>{
+          thisObj.props.chooseBranch(selectedOpt);
+        })
+      } else{
+        thisObj.setState({ areaOptions: [] });
+        thisObj.props.chooseBranch(selectedOpt);
       }
-      
     };
 
     handleAreaSelect = (selectedOpt) => {
-      console.log('resolve 44');
-      this.selectBranchRef.current.clearValue();
-      var comp = this;
-      comp.setState({ branchOptions: [] });
-      if(selectedOpt != null){
-        axios.get(baseURL+'getbranchesbyarea?ar_code='+selectedOpt.value).then((response) => {
-          comp.setState({ branchOptions: response.data });
-        });
-      }
-      selectedOpt = selectedOpt ? selectedOpt : this.selectDivRef.current.props.value;
+      var thisObj = this;
+      thisObj.setState({ selectedArea : selectedOpt });
       if(selectedOpt){
-        this.props.chooseBranch(selectedOpt);
+        axios.get(baseURL+'getbranchesbyarea?ar_code='+selectedOpt.value).then((response) => {
+          thisObj.setState({ branchOptions: response.data });
+        }).catch((err)=>{
+          console.log(err);
+          thisObj.setState({ branchOptions: [] });
+        }).finally(()=>{
+          thisObj.selectBranchRef.current.clearValue();
+          thisObj.props.chooseBranch(selectedOpt);
+        });
+      }else if(thisObj.state.selectedDivision){
+        thisObj.setState({ branchOptions: [] });
+        thisObj.props.chooseBranch(thisObj.state.selectedDivision);
       }
     };
 
     handleBranchSelect = (selectedOpt) => {
-      console.log('resolve 33');
-      selectedOpt = selectedOpt ? selectedOpt : this.selectAreaRef.current.props.value;
+      var thisObj = this;
+      thisObj.setState({ selectedBranch : selectedOpt });
       if(selectedOpt){
-        this.props.chooseBranch(selectedOpt);
+        thisObj.props.chooseBranch(selectedOpt);
+      } else if(thisObj.state.selectedArea) {
+        thisObj.props.chooseBranch(thisObj.state.selectedArea);
       }
     };
 
