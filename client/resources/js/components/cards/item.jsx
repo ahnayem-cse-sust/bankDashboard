@@ -3,6 +3,8 @@ import axios from "axios";
 import Search from "../utils/search";
 import Moment from "moment";
 import BranchInfo from '../infoItems/branchInfo';
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
 
 const baseURL = "http://172.17.0.37/dashboard/dashboard/";
 
