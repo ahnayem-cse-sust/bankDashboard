@@ -73,6 +73,7 @@ class Search extends Component {
         });
       }else if(thisObj.state.selectedDivision){
         thisObj.setState({ branchOptions: [] });
+        thisObj.selectBranchRef.current.clearValue();
         thisObj.props.chooseBranch(thisObj.state.selectedDivision);
       }
     };
