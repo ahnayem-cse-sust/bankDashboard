@@ -127,7 +127,19 @@ class Section extends Component {
 
 
                     <div className="info-box-content">
-                        <span className="info-box-text">deposit</span>
+                    <Popup trigger=
+                        {<span className="popup-box-text">deposit</span>}
+                        position="right center">
+                        <div className="popup-box">GeeksforGeeks
+                        GeeksforGeeks
+                        GeeksforGeeks
+                        GeeksforGeeks
+                        GeeksforGeeks
+                        GeeksforGeeks
+                        </div>
+                        
+                        
+                    </Popup>
                         <span className="info-box-number">
                         {/* {((Math.round(this.state.data?.DEPOSIT * 100) / 100)/(10000000)).toFixed(2)} */}
                         {this.numberFormatter(((this.state.data?.DEPOSIT * 100) / 100)/(10000000))}
@@ -249,6 +261,9 @@ class Section extends Component {
                             </span>
                         </div>
                     </div>
+                </div>
+                <div>          
+        
                 </div>
                 </div>
                  }
