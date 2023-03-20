@@ -40,6 +40,7 @@
     background: #20B2AA;
 }
 
-.sidebar-open{
-    font-size: 22px;
+.info-box-text{
+    word-wrap: break-word;
+    white-space: normal;
 }
