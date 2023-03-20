@@ -260,7 +260,7 @@ class Section extends Component {
                     
                         <span className="info-box-icon7 bg-info elevation-1"><i className="fa fa-bar-chart blackiconcolor"></i></span>
 
-                        <div className="info-box-content">
+                        <div className="info-box-content break">
                             <span className="info-box-text">number of account
                             </span>
                             <span className="info-box-number">
