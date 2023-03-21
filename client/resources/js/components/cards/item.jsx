@@ -14,7 +14,7 @@ class Section extends Component {
 
     state = {
         selected : null,
-        selectDate : Moment('20230228').format('YYYYMMDD'),
+        selectDate : Moment().format('YYYYMMDD'),
         loading : true
       };
 
@@ -39,7 +39,7 @@ class Section extends Component {
         if(selObj){
             loadDataObj = thisObj.loadData(baseURL+'GetBrArDivData?br_code='+selObj.value+'&as_on='+this.state.selectDate);
         }else{
-            loadDataObj = thisObj.loadData(baseURL+'getDashboardinfo?&as_on='+this.state.selectDate);
+            loadDataObj = thisObj.loadData(baseURL+'getDashboardinfo?&as_on='+thisObj.state.selectDate);
         }
         loadDataObj.then((response)=>{
             thisObj.setData(response).then(()=>{
