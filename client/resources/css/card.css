@@ -39,3 +39,8 @@
 .box-color-fr-remitance{
     background: #20B2AA;
 }
+
+.info-box-text{
+    word-wrap: break-word;
+    white-space: normal;
+}
