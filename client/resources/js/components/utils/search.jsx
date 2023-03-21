@@ -18,9 +18,6 @@ class Search extends Component {
         selectedArea : null,
         selectedBranch : null
       };
-    this.selectDivRef = React.createRef();
-    this.selectAreaRef = React.createRef();
-    this.selectBranchRef = React.createRef();
     }
 
     componentDidMount() {
@@ -39,51 +36,64 @@ class Search extends Component {
 
     handleDivisionChange = (selectedOpt) => {
       var thisObj = this;
-      thisObj.setState({ selectedDivision : selectedOpt });
-      thisObj.selectAreaRef.current.clearValue();
-      thisObj.selectBranchRef.current.clearValue();
-      thisObj.setState({ branchOptions: [] });
-      if(selectedOpt){
-        axios.get(baseURL+'getareas?div_code='+selectedOpt.value).then((response) => {
-          thisObj.setState({ areaOptions: response.data });
-        }).catch((err)=>{
-          console.log(err);
-          thisObj.setState({ areaOptions: [] });
-        }).finally(()=>{
-          thisObj.props.chooseBranch(selectedOpt);
-        })
-      } else{
+
+      let myPromise = new Promise(function(myResolve, myReject) {
+        thisObj.setState({ selectedDivision : null });
+        thisObj.setState({ selectedArea : null });
+        thisObj.setState({ selectedBranch : null });
+        thisObj.setState({ branchOptions: [] });
         thisObj.setState({ areaOptions: [] });
+        myResolve(); 
+        myReject('Error occured on setting the data.'); 
+      });
+
+      myPromise.then(()=>{
+        thisObj.setState({ selectedDivision : selectedOpt });
         thisObj.props.chooseBranch(selectedOpt);
-      }
-    };
+        if(selectedOpt){
+          axios.get(baseURL+'getareas?div_code='+selectedOpt.value).then((response) => {
+            thisObj.setState({ areaOptions: response.data });
+          }).catch((err)=>{
+            console.log(err);
+          });
+        }
+      });
+
+    }
 
     handleAreaSelect = (selectedOpt) => {
       var thisObj = this;
-      thisObj.setState({ selectedArea : selectedOpt });
-      if(selectedOpt){
-        axios.get(baseURL+'getbranchesbyarea?ar_code='+selectedOpt.value).then((response) => {
-          thisObj.setState({ branchOptions: response.data });
-        }).catch((err)=>{
-          console.log(err);
-          thisObj.setState({ branchOptions: [] });
-        }).finally(()=>{
-          thisObj.selectBranchRef.current.clearValue();
-          thisObj.props.chooseBranch(selectedOpt);
-        });
-      }else if(thisObj.state.selectedDivision){
+
+      let myPromise = new Promise(function(myResolve, myReject) {
+        thisObj.setState({ selectedArea : null });
+        thisObj.setState({ selectedBranch : null });
         thisObj.setState({ branchOptions: [] });
-        thisObj.selectBranchRef.current.clearValue();
-        thisObj.props.chooseBranch(thisObj.state.selectedDivision);
-      }
-    };
+        myResolve(); 
+        myReject('Error occured on setting the data.'); 
+      });
+
+      myPromise.then(()=>{
+        thisObj.setState({ selectedArea : selectedOpt });
+        if(selectedOpt){
+          axios.get(baseURL+'getbranchesbyarea?ar_code='+selectedOpt.value).then((response) => {
+            thisObj.setState({ branchOptions: response.data });
+          }).catch((err)=>{
+            console.log(err);
+          });
+          thisObj.props.chooseBranch(selectedOpt);
+        } else {
+          thisObj.props.chooseBranch(thisObj.state.selectedDivision);
+        }
+      });
+
+    }
 
     handleBranchSelect = (selectedOpt) => {
       var thisObj = this;
       thisObj.setState({ selectedBranch : selectedOpt });
       if(selectedOpt){
         thisObj.props.chooseBranch(selectedOpt);
-      } else if(thisObj.state.selectedArea) {
+      } else {
         thisObj.props.chooseBranch(thisObj.state.selectedArea);
       }
     };
@@ -99,8 +109,7 @@ class Search extends Component {
                     {/* </div>
                     <div className='col-md-8 col-sm-4 div-select'> */}
                       <Select
-                        ref={this.selectDivRef}
-                        className="basic-single"
+                        className="basic-single dash-select"
                         classNamePrefix="select"
                         isDisabled={false}
                         isLoading={false}
@@ -113,10 +122,12 @@ class Search extends Component {
               </div>
               
               <div className='col-md-3 col-sm-3'>
+                {
+                  this.state.selectedDivision && 
+                  <div>
                     <label>Select Area :</label>
                     <Select
-                      ref={this.selectAreaRef}
-                      className="basic-single"
+                      className="basic-single dash-select"
                       classNamePrefix="select"
                       isDisabled={false}
                       isLoading={false}
@@ -125,21 +136,28 @@ class Search extends Component {
                       options={this.state.areaOptions}
                       onChange={this.handleAreaSelect}
                     />
+                  </div>
+                }
               </div>
               
               <div className='col-md-3 col-sm-3'>
-                <label>Select Branch :</label>
-                      <Select
-                        ref={this.selectBranchRef}
-                        className="basic-single"
-                        classNamePrefix="select"
-                        isDisabled={false}
-                        isLoading={false}
-                        isClearable={true}
-                        isSearchable={true}
-                        options={this.state.branchOptions}
-                        onChange={this.handleBranchSelect}
-                      />
+                {
+                  this.state.selectedArea && 
+                  <div>
+                    <label>Select Branch :</label>
+                    <Select
+                      className="basic-single dash-select"
+                      classNamePrefix="select"
+                      isDisabled={false}
+                      isLoading={false}
+                      isClearable={true}
+                      isSearchable={true}
+                      options={this.state.branchOptions}
+                      onChange={this.handleBranchSelect}
+                    />
+                  </div>
+                }
+                
               </div>
               
               <div className='col-md-1 col-sm-1 padding-right-20px'>
