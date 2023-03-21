@@ -82,14 +82,14 @@ class Section extends Component {
         thisObj.setState({selectDate:Moment(selectedDate).format('YYYYMMDD')});
         thisObj.setState({ loading:true });
         let br_code = thisObj.state.selected.value;
-        if(br_code = 'WHOLE BANK'){
+        if(br_code === 'WHOLE BANK'){
             br_code = '';
         }
         let loadDataObj;
         if(br_code){
             loadDataObj = thisObj.loadData(baseURL+'GetBrArDivData?br_code='+br_code+'&as_on='+Moment(selectedDate).format('YYYYMMDD'));
         }else{
-            loadDataObj = thisObj.loadData(baseURL+'getDashboardinfo?&as_on='+Moment(selectedDate).format('YYYYMMDD'));
+            loadDataObj = thisObj.loadData(baseURL+'getDashboardinfo?as_on='+Moment(selectedDate).format('YYYYMMDD'));
         }
         loadDataObj.then((response)=>{
             console.log(response);
@@ -130,7 +130,7 @@ class Section extends Component {
                     <span className="info-box-icon bg-info elevation-1"><i className="fa fa-cubes blackiconcolor"></i></span>
 
                     <div className="info-box-content">
-                        <span className="info-box-text">Asset/liability</span>
+                        <span className="info-box-text">Asset</span>
                         <span className="info-box-number">
                         {this.numberFormatter(((this.state.data?.ASSET * 100) / 100)/(10000000))} <span className="crore">Crore</span>
                         </span>
@@ -261,7 +261,7 @@ class Section extends Component {
                         <span className="info-box-icon7 bg-info elevation-1"><i className="fa fa-bar-chart blackiconcolor"></i></span>
 
                         <div className="info-box-content">
-                            <span className="info-box-text">no of account
+                            <span className="info-box-text">number of account
                             </span>
                             <span className="info-box-number">
                          {this.numberFormatter((((Math.round(this.state.data?.DEPOSIT_AC
