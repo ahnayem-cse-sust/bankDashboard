@@ -260,8 +260,8 @@ class Section extends Component {
                     
                         <span className="info-box-icon7 bg-info elevation-1"><i className="fa fa-bar-chart blackiconcolor"></i></span>
 
-                        <div className="info-box-content break">
-                            <span className="info-box-text">number of account
+                        <div className="info-box-content">
+                            <span className="info-box-text" style={{"word-break": "break-all"}}>number of account
                             </span>
                             <span className="info-box-number">
                          {this.numberFormatter((((Math.round(this.state.data?.DEPOSIT_AC
