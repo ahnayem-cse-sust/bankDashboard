@@ -82,14 +82,14 @@ class Section extends Component {
         thisObj.setState({selectDate:Moment(selectedDate).format('YYYYMMDD')});
         thisObj.setState({ loading:true });
         let br_code = thisObj.state.selected.value;
-        if(br_code = 'WHOLE BANK'){
+        if(br_code === 'WHOLE BANK'){
             br_code = '';
         }
         let loadDataObj;
         if(br_code){
             loadDataObj = thisObj.loadData(baseURL+'GetBrArDivData?br_code='+br_code+'&as_on='+Moment(selectedDate).format('YYYYMMDD'));
         }else{
-            loadDataObj = thisObj.loadData(baseURL+'getDashboardinfo?&as_on='+Moment(selectedDate).format('YYYYMMDD'));
+            loadDataObj = thisObj.loadData(baseURL+'getDashboardinfo?as_on='+Moment(selectedDate).format('YYYYMMDD'));
         }
         loadDataObj.then((response)=>{
             console.log(response);
