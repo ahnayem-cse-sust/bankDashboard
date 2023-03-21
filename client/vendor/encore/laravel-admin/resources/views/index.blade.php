@@ -27,6 +27,8 @@
     @viteReactRefresh
     @vite('resources/js/react.jsx') -->
 
+    
+
 </head>
 
 <body class="hold-transition {{config('admin.skin')}} {{join(' ', config('admin.layout'))}}">
