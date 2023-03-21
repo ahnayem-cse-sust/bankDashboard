@@ -109,7 +109,7 @@ class Search extends Component {
                     {/* </div>
                     <div className='col-md-8 col-sm-4 div-select'> */}
                       <Select
-                        className="basic-single"
+                        className="basic-single dash-select"
                         classNamePrefix="select"
                         isDisabled={false}
                         isLoading={false}
@@ -127,7 +127,7 @@ class Search extends Component {
                   <div>
                     <label>Select Area :</label>
                     <Select
-                      className="basic-single"
+                      className="basic-single dash-select"
                       classNamePrefix="select"
                       isDisabled={false}
                       isLoading={false}
@@ -146,7 +146,7 @@ class Search extends Component {
                   <div>
                     <label>Select Branch :</label>
                     <Select
-                      className="basic-single"
+                      className="basic-single dash-select"
                       classNamePrefix="select"
                       isDisabled={false}
                       isLoading={false}
