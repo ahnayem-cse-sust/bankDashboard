@@ -150,13 +150,11 @@ class Section extends Component {
                     <Popup trigger=
                         {<span className="popup-box-text">deposit</span>}
                         position="right center">
-                        <div className="popup-box">GeeksforGeeks
-                        GeeksforGeeks
-                        GeeksforGeeks
-                        GeeksforGeeks
-                        GeeksforGeeks
-                        GeeksforGeeks
-                        </div>
+                        <div class="content">
+      <a href="#">close</a>
+      <br>
+      <p>Popup div content</p>
+    </div>
                         
                         
                     </Popup>
