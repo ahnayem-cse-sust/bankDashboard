@@ -148,7 +148,7 @@ class Section extends Component {
                     <Popup trigger={<span className="info-box-text">deposit</span>}
                            position="">
                         <div className="popup-box">
-                            <DepositDetails details={this.state.data.DEPOSIT_DETAILS}/>
+                            <DepositDetails details={this.state.data.DEPOSIT_DETAILS[0]}/>
                         </div>
                     </Popup>
                         <span className="info-box-number">
