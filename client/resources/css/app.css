@@ -75,3 +75,8 @@
     box-shadow:  3px 5px 15px #bebebe,
                 -11px 0px 22px #ffffff;
   }
+
+  .info-box-popup:hover{
+    background: #d7d0f3;
+    cursor: pointer;
+  }
