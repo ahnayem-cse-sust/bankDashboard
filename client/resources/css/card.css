@@ -10,6 +10,7 @@
 .br-name{
     font-size: 22px;
     padding-bottom: 0px;
+    color: #1c0bad;
 }
 
 .popup-box-text{
@@ -65,6 +66,15 @@ a:hover {
   }
 
 
+.info-box-text{
+    word-wrap: break-word;
+    white-space: normal;
+}
+   
 
-
-
+.info-box{
+    border-radius: 10px;
+    background: #ffffff;
+    box-shadow:  11px 11px 22px #bebebe,
+                -11px -11px 22px #ffffff;
+}
