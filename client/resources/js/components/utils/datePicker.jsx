@@ -25,7 +25,7 @@ const datePickerComp = (props) => {
             dateFormat='dd/MM/yyyy'
             onSelect={props.selectDate}
             onChange={(date) => setStartDate(date)} 
-            className='form-control'
+            className='form-control dash-select'
             />
         {/* </div> */}
     </div>
