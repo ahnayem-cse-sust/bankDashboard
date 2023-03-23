@@ -4,19 +4,14 @@ import React, { useState } from 'react';
 const DepositDetails = (props) => {
     const [data, setData] = useState([]);
 
-    function handleClose() {
-        console.log("aaa");
-    }
-
     return (
-      
-         <div className="popup-box">
+        <div className="popup-box">
             <div className="box">
-                <div class="card text-center">
-                    <div class="card-header deposit-header">
+                <div className="card text-center">
+                    <div className="card-header deposit-header">
                        Deposit Details
                     </div>
-                    <div class="card-body">
+                    <div className="card-body">
                     <div className="col-12 col-sm-6 col-md-6">
                     <div className="info-box-card">                       
                     <span className="popup-text">Current Deposit</span>
@@ -115,15 +110,13 @@ const DepositDetails = (props) => {
                     </div>
                 </div>
                     </div>
-                    <div class="card-footer text-muted">
+                    <div className="card-footer text-muted">
                    
                     </div>
                 </div>
-                
-           <span className="close-icon" onClick={handleClose}>x</span>          
            {props.content}
          </div>
-       </div>
+         </div>
     );
 
 };

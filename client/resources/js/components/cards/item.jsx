@@ -3,8 +3,6 @@ import axios from "axios";
 import Search from "../utils/search";
 import Moment from "moment";
 import BranchInfo from '../infoItems/branchInfo';
-import Popup from 'reactjs-popup';
-import 'reactjs-popup/dist/index.css';
 import DepositDetails from '../details/depositDetails';
 
 const baseURL = "http://172.17.0.37/dashboard/dashboard/";
@@ -16,7 +14,8 @@ class Section extends Component {
     state = {
         selected : null,
         selectDate : Moment().format('YYYYMMDD'),
-        loading : true
+        loading : true,
+        isOpen: false
       };
 
       componentDidMount() {
@@ -111,7 +110,11 @@ class Section extends Component {
         );
     }
 
-      
+    handlePopUpCLose = () => {
+        
+        this.setState({ isOpen : !this.state.isOpen });
+        console.log(this.state.isOpen);
+    }  
    
 
   render() {
@@ -143,7 +146,8 @@ class Section extends Component {
 
                 <div className="col-12 col-sm-6 col-md-3">
                     
-                    <Popup trigger={
+                    {/* <Popup closeOnDocumentClick  onClose={this.handlePopUpCLose} 
+                    trigger={ open =>(
                         <div className="info-box info-box-popup">
                             <span className="info-box-icon1 bg-info elevation-1"><i className="fa-solid fa-bangladeshi-taka-sign blackiconcolor"></i></span>
                             <div className="info-box-content">
@@ -153,13 +157,33 @@ class Section extends Component {
                             </span>
                             </div>
                         </div>
-                        }
+                        )}
                            position="">
                         <div className="popup-box">
                             <DepositDetails details={this.state.data.DEPOSIT_DETAILS[0]}/>
+                            <span className="close-icon" onClick={this.handlePopUpCLose}>x</span>  
+                            {props.content}  
                         </div>
-                    </Popup>
-                        
+                    </Popup> */}
+
+                    <div className="info-box info-box-popup" onClick={this.handlePopUpCLose}>
+                            <span className="info-box-icon1 bg-info elevation-1"><i className="fa-solid fa-bangladeshi-taka-sign blackiconcolor"></i></span>
+                            <div className="info-box-content">
+                            <span className="info-box-text">deposit</span>
+                            <span className="info-box-number">
+                            {this.numberFormatter(((this.state.data?.DEPOSIT * 100) / 100)/(10000000))} <span className="crore">Crore</span>
+                            </span>
+                            </div>
+                        </div>
+
+                    {this.state.isOpen && <DepositDetails
+                    details={this.state.data.DEPOSIT_DETAILS[0]}
+                    content={<>
+                        <span className="close-icon" onClick={this.handlePopUpCLose}>x</span>
+                    </>}
+                    handleClose={this.handlePopUpCLose}
+                    />}
+
                 </div>
                     <div className="col-12 col-sm-6 col-md-3">
                     <div className="info-box">
