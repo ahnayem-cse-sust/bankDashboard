@@ -130,7 +130,7 @@ class Section extends Component {
                 { this.state.loading && <div className="loader"></div>} 
                 { !this.state.loading && 
                 <div>
-                    <div className="col-12 col-sm-6 col-md-3">
+                    <div className="col-12 col-sm-6 col-md-3 animate__animated animate__pulse">
                     <div className="info-box">
 
                     <span className="info-box-icon bg-info elevation-1"><i className="fa fa-cubes blackiconcolor"></i></span>

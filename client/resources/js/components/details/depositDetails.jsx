@@ -6,7 +6,7 @@ const DepositDetails = (props) => {
 
     return (
         <div className="popup-box">
-            <div className="box">
+            <div className="box animate__animated animate__pulse">
                 <div className="card text-center">
                     <div className="card-header deposit-header">
                        Deposit Details
