@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
+import DepositBar from '../charts/barChart';
 
 
 const DepositDetails = (props) => {
     const [data, setData] = useState([]);
 
     return (
-        <div className="popup-box">
-            <div className="box">
+    <div className="popup-box">
+        <div className="box">
                 <div className="card-header deposit-header">
                     Deposit Details
                 </div>
@@ -117,7 +118,9 @@ const DepositDetails = (props) => {
                 </div>
            {props.content}
             </div>
-            <div className="col-12 col-sm-6 col-md-6"></div>
+            <div className="col-12 col-sm-6 col-md-6">
+            <DepositBar />
+            </div>
         </div>
     </div>
     );

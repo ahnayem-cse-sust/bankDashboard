@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import Items from './item';
 import Table from './table';
-import LineChart from './charts/lineChart';
-import BarChart from './charts/barChart';
+import LineChart from '../charts/lineChart';
+import BarChart from '../charts/barChart';
 
 
 class Section extends Component {
