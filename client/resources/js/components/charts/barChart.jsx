@@ -22,7 +22,7 @@ class BarChart extends Component {
     return (
             <div className="">
                 <div className="chart-container">
-                <h2 style={{ textAlign: "center" }}>Current Growth</h2>
+                <h4 style={{ textAlign: "center" }}>{this.props.heading}</h4>
                 <Bar
                   datasetIdKey='id'
                   data={{
@@ -31,7 +31,7 @@ class BarChart extends Component {
                       {
                         id: 1,
                         label: '',
-                        data: [2, 5, 6, 7,6,9,4],
+                        data: [2, 5, 6, 7,6,14,4],
                       },
                       // {
                       //   id: 2,
