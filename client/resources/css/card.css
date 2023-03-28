@@ -148,8 +148,8 @@ a:hover {
     content: 'x';
     cursor: pointer;
     position: fixed;
-    right: -20px;
-    top: -21px;
+    right: -2%;
+    top: -4.7%;
     background: #ededed;
     width: 25px;
     height: 25px;
