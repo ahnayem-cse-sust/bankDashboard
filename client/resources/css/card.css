@@ -104,6 +104,12 @@ a:hover {
     text-transform: lowercase;
 }
 
+.popupHeader-crore{
+    color: black;
+    font-size: 16px;
+    text-transform: lowercase;
+}
+
 .popup-number{
  
     color: black;
