@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 
-const LoanDetails = (props) => {
+const DepositDetails = (props) => {
     const [data, setData] = useState([]);
 
     return (

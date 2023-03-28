@@ -189,22 +189,26 @@ class Section extends Component {
 
                 
                 <div className="col-12 col-sm-6 col-md-3 ">
-                    <div className="info-box">
+                  
 
-                    <span className="info-box-icon4 bg-info elevation-1"><i className="fa-solid fa-money-bill-1-wave blackiconcolor"></i></span>
+                    <div className="info-box info-box-popup" onClick={this.handlePopUpCLose}>
+                            <span className="info-box-icon1 bg-info elevation-1"><i className="fa-solid fa-bangladeshi-taka-sign blackiconcolor"></i></span>
+                            <div className="info-box-content">
+                            <span className="info-box-text">LOAN & ADVANCE</span>
+                            <span className="info-box-number">
+                            {this.numberFormatter(((this.state.data?.ADVANCE * 100) / 100)/(10000000))} <span className="crore">Crore</span>
+                            </span>
+                            </div>
+                        </div>
 
-                    <div className="info-box-content">
-                        <span className="info-box-text">LOAN & ADVANCE</span>
-                        <span className="info-box-number">
-
-                        {/*(Math.round(this.state.data?.ADVANCE * 100) / 100).toFixed(2)*/}
-
-                        {this.numberFormatter(((this.state.data?.ADVANCE * 100) / 100)/(10000000))} <span className="crore">Crore</span>
-
-                        {/* <small>%</small> */}
-                        </span>
-                    </div>
-                    </div>
+                    {this.state.isOpen && <DepositDetails
+                   details={this.state.data.DEPOSIT_DETAILS[0]}
+                   deposit={this.state.data.DEPOSIT}
+                    content={<>
+                        <span className="close-icon" onClick={this.handlePopUpCLose}>x</span>
+                    </>}
+                    handleClose={this.handlePopUpCLose}
+                    />}
 
                 
                 </div>
