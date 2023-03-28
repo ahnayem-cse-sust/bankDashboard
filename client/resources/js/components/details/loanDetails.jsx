@@ -18,7 +18,7 @@ const LoanDetails = (props) => {
             <div className="box-loan animate__animated animate__fadeInDownBig">
                 <div className="card text-center">
                     <div className="card-header deposit-header">
-                       Loan & Advance: {numberFormatter((((props.loan * 100)/100))/(10000000))} <span className="popup-crore">Crore</span>
+                       Loan & Advance: {numberFormatter((((props.loan * 100)/100))/(10000000))} <span className="popupHeader-crore">Crore</span>
                     </div>
                     <div className="card-body">
                     <div className="col-12 col-sm-6 col-md-6">
@@ -31,7 +31,7 @@ const LoanDetails = (props) => {
                     </div>
                 <div className="col-12 col-sm-6 col-md-5">
                     <div className="info-box-card-num">                       
-                    <span className="popup-number"></span>
+                    <span className="popup-number">{numberFormatter((((props.details.LOAN_AMT * 100)/100))/(10000000))}</span> <span className="popup-crore">Crore</span>
                     </div>
                 </div>
                 
@@ -45,7 +45,7 @@ const LoanDetails = (props) => {
                     </div>
                 <div className="col-12 col-sm-6 col-md-5">
                     <div className="info-box-card-num">                       
-                    <span className="popup-number"></span>
+                    <span className="popup-number">{numberFormatter((((props.details.SOD_AMT * 100)/100))/(10000000))}</span> <span className="popup-crore">Crore</span>
                     </div>
                 </div>
                 <div className="col-12 col-sm-6 col-md-6">
@@ -58,7 +58,7 @@ const LoanDetails = (props) => {
                     </div>
                 <div className="col-12 col-sm-6 col-md-5">
                     <div className="info-box-card-num">                       
-                    <span className="popup-number"></span>
+                    <span className="popup-number">{numberFormatter((((props.details.BPD_AMT * 100)/100))/(10000000))}</span> <span className="popup-crore">Crore</span>
                     </div>
                 </div>
                     </div>

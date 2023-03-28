@@ -105,7 +105,7 @@ a:hover {
 }
 
 .popupHeader-crore{
-    color: black;
+    color: blue;
     font-size: 16px;
     text-transform: lowercase;
 }
@@ -121,7 +121,7 @@ a:hover {
 .deposit-header{
     white-space: nowrap; 
     overflow: hidden;
-    color: black;
+    color: blue;
     font-size: 20px;  
     text-align: center;
     margin-bottom: 20px;

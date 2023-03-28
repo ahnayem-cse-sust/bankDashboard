@@ -195,7 +195,7 @@ class Section extends Component {
                   
 
                     <div className="info-box info-box-popup" onClick={this.handleLoanPopUpCLose}>
-                            <span className="info-box-icon1 bg-info elevation-1"><i className="fa-solid fa-bangladeshi-taka-sign blackiconcolor"></i></span>
+                            <span className="info-box-icon4 bg-info elevation-1"><i className="fa-solid fa-money-bill-1-wave blackiconcolor"></i></span>
                             <div className="info-box-content">
                             <span className="info-box-text">LOAN & ADVANCE</span>
                             <span className="info-box-number">
@@ -205,7 +205,7 @@ class Section extends Component {
                         </div>
 
                     {this.state.isLoanOpen && <LoanDetails
-                   
+                   details={this.state.data.LOAN_DETAILS[0]}
                    loan={this.state.data.ADVANCE}
                     content={<>
                         <span className="close-icon" onClick={this.handleLoanPopUpCLose}>x</span>

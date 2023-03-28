@@ -19,7 +19,7 @@ const DepositDetails = (props) => {
             <div className="box animate__animated animate__fadeInDownBig">
                 <div className="card text-center">
                     <div className="card-header deposit-header">
-                       Deposit : {numberFormatter((((props.deposit * 100)/100))/(10000000))} <span className="popup-crore">Crore</span>
+                       Deposit : {numberFormatter((((props.deposit * 100)/100))/(10000000))} <span className="popupHeader-crore">Crore</span>
                     </div>
                     <div className="card-body">
                     <div className="col-12 col-sm-6 col-md-6">
