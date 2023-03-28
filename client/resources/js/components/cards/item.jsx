@@ -130,7 +130,7 @@ class Section extends Component {
                 { this.state.loading && <div className="loader"></div>} 
                 { !this.state.loading && 
                 <div>
-                    <div className="col-12 col-sm-6 col-md-3 animate__animated animate__rotateInDownLeft">
+                    <div className="col-12 col-sm-6 col-md-3">
                     <div className="info-box">
 
                     <span className="info-box-icon bg-info elevation-1"><i className="fa fa-cubes blackiconcolor"></i></span>
@@ -144,7 +144,7 @@ class Section extends Component {
                     </div>
                 </div>
 
-                <div className="col-12 col-sm-6 col-md-3">
+                <div className="col-12 col-sm-6 col-md-3 ">
                     
                     {/* <Popup closeOnDocumentClick  onClose={this.handlePopUpCLose} 
                     trigger={ open =>(
@@ -178,6 +178,7 @@ class Section extends Component {
 
                     {this.state.isOpen && <DepositDetails
                     details={this.state.data.DEPOSIT_DETAILS[0]}
+                    deposit={this.state.data.DEPOSIT}
                     content={<>
                         <span className="close-icon" onClick={this.handlePopUpCLose}>x</span>
                     </>}
@@ -187,7 +188,7 @@ class Section extends Component {
                 </div>
 
                 
-                <div className="col-12 col-sm-6 col-md-3 animate__rotateInDownLeft">
+                <div className="col-12 col-sm-6 col-md-3 ">
                     <div className="info-box">
 
                     <span className="info-box-icon4 bg-info elevation-1"><i className="fa-solid fa-money-bill-1-wave blackiconcolor"></i></span>
