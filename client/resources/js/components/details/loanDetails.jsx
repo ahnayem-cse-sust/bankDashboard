@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 
 
-const DepositDetails = (props) => {
+const LoanDetails = (props) => {
     const [data, setData] = useState([]);
 
     return (
         <div className="popup-box">
-            <div className="box">
+            <div className="box animate__animated animate__fadeInDown">
                 <div className="card text-center">
                     <div className="card-header deposit-header">
-                       Loan Details
+                       Loan : {props.loan}
                     </div>
                     <div className="card-body">
                     <div className="col-12 col-sm-6 col-md-6">
@@ -121,4 +121,4 @@ const DepositDetails = (props) => {
 
 };
 
-export default DepositDetails;
+export default LoanDetails;

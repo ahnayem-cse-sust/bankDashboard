@@ -4,6 +4,7 @@ import Search from "../utils/search";
 import Moment from "moment";
 import BranchInfo from '../infoItems/branchInfo';
 import DepositDetails from '../details/depositDetails';
+import LoanDetails from '../details/loanDetails';
 
 const baseURL = "http://172.17.0.37/dashboard/dashboard/";
 
@@ -15,7 +16,8 @@ class Section extends Component {
         selected : null,
         selectDate : Moment().format('YYYYMMDD'),
         loading : true,
-        isOpen: false
+        isLoanOpen: false,
+        isDepositOpen: false
       };
 
       componentDidMount() {
@@ -110,12 +112,13 @@ class Section extends Component {
         );
     }
 
-    handlePopUpCLose = () => {
-        
-        this.setState({ isOpen : !this.state.isOpen });
-        console.log(this.state.isOpen);
+    handleLoanPopUpCLose = () => {
+        this.setState({ isLoanOpen : !this.state.isLoanOpen });
     }  
    
+    handleDepositPopUpCLose = () => {
+        this.setState({ isDepositOpen : !this.state.isDepositOpen });
+    } 
 
   render() {
 
@@ -166,7 +169,7 @@ class Section extends Component {
                         </div>
                     </Popup> */}
 
-                    <div className="info-box info-box-popup" onClick={this.handlePopUpCLose}>
+                    <div className="info-box info-box-popup" onClick={this.handleDepositPopUpCLose}>
                             <span className="info-box-icon1 bg-info elevation-1"><i className="fa-solid fa-bangladeshi-taka-sign blackiconcolor"></i></span>
                             <div className="info-box-content">
                             <span className="info-box-text">deposit</span>
@@ -176,13 +179,13 @@ class Section extends Component {
                             </div>
                         </div>
 
-                    {this.state.isOpen && <DepositDetails
+                    {this.state.isDepositOpen && <DepositDetails
                     details={this.state.data.DEPOSIT_DETAILS[0]}
                     deposit={this.state.data.DEPOSIT}
                     content={<>
-                        <span className="close-icon" onClick={this.handlePopUpCLose}>x</span>
+                        <span className="close-icon" onClick={this.handleDepositPopUpCLose}>x</span>
                     </>}
-                    handleClose={this.handlePopUpCLose}
+                    handleClose={this.handleDepositPopUpCLose}
                     />}
 
                 </div>
@@ -191,7 +194,7 @@ class Section extends Component {
                 <div className="col-12 col-sm-6 col-md-3 ">
                   
 
-                    <div className="info-box info-box-popup" onClick={this.handlePopUpCLose}>
+                    <div className="info-box info-box-popup" onClick={this.handleLoanPopUpCLose}>
                             <span className="info-box-icon1 bg-info elevation-1"><i className="fa-solid fa-bangladeshi-taka-sign blackiconcolor"></i></span>
                             <div className="info-box-content">
                             <span className="info-box-text">LOAN & ADVANCE</span>
@@ -201,13 +204,13 @@ class Section extends Component {
                             </div>
                         </div>
 
-                    {this.state.isOpen && <DepositDetails
-                   details={this.state.data.DEPOSIT_DETAILS[0]}
-                   deposit={this.state.data.DEPOSIT}
+                    {this.state.isLoanOpen && <LoanDetails
+                   
+                   loan={this.state.data.ADVANCE}
                     content={<>
-                        <span className="close-icon" onClick={this.handlePopUpCLose}>x</span>
+                        <span className="close-icon" onClick={this.handleLoanPopUpCLose}>x</span>
                     </>}
-                    handleClose={this.handlePopUpCLose}
+                    handleClose={this.handleLoanPopUpCLose}
                     />}
 
                 
