@@ -6,10 +6,10 @@ const DepositDetails = (props) => {
 
     return (
         <div className="popup-box">
-            <div className="box">
+            <div className="box animate__animated animate__fadeInDown">
                 <div className="card text-center">
                     <div className="card-header deposit-header">
-                       Deposit Details
+                       Deposit : {props.deposit}
                     </div>
                     <div className="card-body">
                     <div className="col-12 col-sm-6 col-md-6">
@@ -98,7 +98,7 @@ const DepositDetails = (props) => {
                 <div className="col-12 col-sm-6 col-md-6">
                     <div className="info-box-card">
                        
-                    <span className="popup-text">Bill Payable </span>
+                    <span className="popup-text">Bills Payable </span>
                     </div>
                 </div>
                 <div className="col-12 col-sm-6 col-md-1">
