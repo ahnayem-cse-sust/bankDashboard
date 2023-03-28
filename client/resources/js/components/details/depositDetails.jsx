@@ -4,12 +4,22 @@ import React, { useState } from 'react';
 const DepositDetails = (props) => {
     const [data, setData] = useState([]);
 
+
+    function numberFormatter (value) {
+        return parseFloat(parseFloat(value).toFixed(2)).toLocaleString(
+        "en-IN",
+        {
+            useGrouping: true,
+        }
+        );
+    }
+
     return (
         <div className="popup-box">
             <div className="box animate__animated animate__fadeInDown">
                 <div className="card text-center">
                     <div className="card-header deposit-header">
-                       Deposit : {props.deposit}
+                       Deposit : {numberFormatter((((props.deposit * 100)/100))/(10000000))} <span className="popup-crore">Crore</span>
                     </div>
                     <div className="card-body">
                     <div className="col-12 col-sm-6 col-md-6">
@@ -22,7 +32,7 @@ const DepositDetails = (props) => {
                     </div>
                 <div className="col-12 col-sm-6 col-md-5">
                     <div className="info-box-card-num">                       
-                    <span className="popup-number">{props.details.CD_AMT}</span>
+                    <span className="popup-number">{numberFormatter((((props.details.CD_AMT * 100)/100))/(10000000))}</span> <span className="popup-crore">Crore</span>
                     </div>
                 </div>
                 
@@ -36,7 +46,7 @@ const DepositDetails = (props) => {
                     </div>
                 <div className="col-12 col-sm-6 col-md-5">
                     <div className="info-box-card-num">                       
-                    <span className="popup-number">{props.details.SB_AMT}</span>
+                    <span className="popup-number">{numberFormatter((((props.details.SB_AMT * 100)/100))/(10000000))}</span> <span className="popup-crore">Crore</span>
                     </div>
                 </div>
                 <div className="col-12 col-sm-6 col-md-6">
@@ -49,7 +59,7 @@ const DepositDetails = (props) => {
                     </div>
                 <div className="col-12 col-sm-6 col-md-5">
                     <div className="info-box-card-num">                       
-                    <span className="popup-number">{props.details.SND_AMT}</span>
+                    <span className="popup-number">{numberFormatter((((props.details.SND_AMT * 100)/100))/(10000000))}</span> <span className="popup-crore">Crore</span>
                     </div>
                 </div>
                 <div className="col-12 col-sm-6 col-md-6">
@@ -64,7 +74,7 @@ const DepositDetails = (props) => {
                 <div className="col-12 col-sm-6 col-md-5">
                     <div className="info-box-card-num">
                        
-                    <span className="popup-number">{props.details.FIXED_DEP_AMT}</span>
+                    <span className="popup-number">{numberFormatter((((props.details.FIXED_DEP_AMT * 100)/100))/(10000000))}</span> <span className="popup-crore">Crore</span>
                     </div>
                 </div>
                 <div className="col-12 col-sm-6 col-md-6">
@@ -79,7 +89,7 @@ const DepositDetails = (props) => {
                 <div className="col-12 col-sm-6 col-md-5">
                     <div className="info-box-card-num">
                        
-                    <span className="popup-number">{props.details.REC_DEP_AMT}</span>
+                    <span className="popup-number">{numberFormatter((((props.details.REC_DEP_AMT * 100)/100))/(10000000))}</span> <span className="popup-crore">Crore</span>
                     </div>
                 </div>
                 <div className="col-12 col-sm-6 col-md-6">
@@ -92,7 +102,7 @@ const DepositDetails = (props) => {
                     </div>
                 <div className="col-12 col-sm-6 col-md-5">
                     <div className="info-box-card-num">                       
-                    <span className="popup-number">{props.details.FC_DEP_AMT}</span>
+                    <span className="popup-number">{numberFormatter((((props.details.FC_DEP_AMT * 100)/100))/(10000000))}</span> <span className="popup-crore">Crore</span>
                     </div>
                 </div>
                 <div className="col-12 col-sm-6 col-md-6">
@@ -106,7 +116,7 @@ const DepositDetails = (props) => {
                     </div>
                 <div className="col-12 col-sm-6 col-md-5">
                     <div className="info-box-card-num">                       
-                    <span className="popup-number">{props.details.BP_AMT}</span>
+                    <span className="popup-number">{numberFormatter((((props.details.BP_AMT * 100)/100))/(10000000))}</span> <span className="popup-crore">Crore</span>
                     </div>
                 </div>
                     </div>
