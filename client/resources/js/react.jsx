@@ -10,7 +10,8 @@
 import { createRoot } from 'react-dom/client';
 import App from './components/index';
 
-import '../css/app.css'; 
+import '../css/app.css';
+import 'animate.css' 
 
 const container = document.getElementById('react-app');
 const root = createRoot(container); // createRoot(container!) if you use TypeScript
