@@ -18,7 +18,7 @@ const LoanDetails = (props) => {
             <div className="box-loan animate__animated animate__fadeInDownBig">
                 <div className="card text-center">
                     <div className="card-header deposit-header">
-                       Loan & Advance: {numberFormatter((((props.loan * 100)/100))/(10000000))} <span className="popupHeader-crore">Crore</span>
+                       Loan & Advance: <span className="popupHeadnum">{numberFormatter((((props.loan * 100)/100))/(10000000))} </span><span className="popupHeader-crore">Crore</span>
                     </div>
                     <div className="card-body">
                     <div className="col-12 col-sm-6 col-md-6">

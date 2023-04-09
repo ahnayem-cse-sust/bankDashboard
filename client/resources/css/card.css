@@ -110,6 +110,12 @@ a:hover {
     text-transform: lowercase;
 }
 
+.popupHeadnum{
+    color: #1c0bad;
+    font-size: 20px;
+    background-color: white;
+}
+
 .popup-number{
  
     color: black;
