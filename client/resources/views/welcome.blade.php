@@ -40,7 +40,7 @@
  
   <div class="login-logo">
   <!--   <a href="{{ admin_url('/') }}"><b>{{config('admin.name')}}</b></a> -->
-   <p> DASHBOARD</p>
+   <p class="login-head">  Janata Dashboard</p>
   </div>
   <!-- /.login-logo -->
   <div class="login">
