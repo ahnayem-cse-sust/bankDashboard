@@ -93,24 +93,33 @@ a:hover {
   }
 
   .popup-text{
-    white-space: nowrap; 
-    overflow: hidden;
-    text-overflow: clip;
-    line-break: normal;
-    display: block;
     color: black;
     font-size: 15px;  
     text-align: center;
 }
 
-.popup-number{
-    white-space: nowrap; 
-    overflow: hidden;
-    text-overflow: clip;
-    line-break: normal;
-    display: block;
+.popup-crore{
     color: black;
-    font-size: 15px;
+    font-size: 16px;
+    text-transform: lowercase;
+}
+
+.popupHeader-crore{
+    color: #1c0bad;
+    font-size: 16px;
+    text-transform: lowercase;
+}
+
+.popupHeadnum{
+    color: #1c0bad;
+    font-size: 20px;
+    background-color: white;
+}
+
+.popup-number{
+ 
+    color: black;
+    font-size: 16px;
     text-align: center;
 }
 
@@ -118,24 +127,36 @@ a:hover {
 .deposit-header{
     white-space: nowrap; 
     overflow: hidden;
-    text-overflow: clip;
-    line-break: normal;
-    display: block;
-    color: black;
+    color: #1c0bad;
     font-size: 20px;  
     text-align: center;
     margin-bottom: 20px;
     border-style: solid;
-    margin-left: 30%;
-    margin-right: 30%;
+    margin-left: 25%;
+    margin-right: 25%;
 }
   
   .box {
     position: relative;
-    width: 70%;
+    width: 60%;
     margin: 0 auto;
     height: auto;
-    min-height: 70vh;
+    min-height: 70%;
+    max-height: 100%;
+    margin-top: calc(15vh - 20px);
+    background: #fff;
+    border-radius: 4px;
+    padding: 20px;
+    border: 1px solid #999;
+    overflow: none;
+  }
+
+  .box-loan {
+    position: relative;
+    width: 60%;
+    margin: 0 auto;
+    height: auto;
+    min-height: 40%;
     margin-top: calc(15vh - 20px);
     background: #fff;
     border-radius: 4px;
@@ -163,9 +184,9 @@ a:hover {
   .info-box-card{
     min-height: 30px;
     margin-bottom: 20px;
-    margin-left: 150px;
+    margin-left: 90px;
     border-radius: 10px;
-    background: #ADD8E6;
+    background: #87CEEB;
     box-shadow: 11px 11px 22px #bebebe, -11px -11px 22px #ffffff;
     font-weight: bold;
   }
