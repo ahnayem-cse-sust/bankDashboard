@@ -24,6 +24,10 @@
   <link rel="stylesheet" href="{{ admin_asset("vendor/laravel-admin/AdminLTE/plugins/iCheck/square/blue.css") }}">
   <!-- janata logo -->
   <link rel="stylesheet" href="{{ admin_asset("vendor/laravel-admin/AdminLTE/dist/css/loginpage.css") }}">
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -43,7 +47,7 @@
    <p class="login-head">  Janata Dashboard</p>
   </div>
   <!-- /.login-logo -->
-  <div class="login">
+  <div class="login animate__animated animate__zoomIn">
   <a href="http://172.17.0.37:8181/admin/">
     <button class="button button1">LOGIN</button>
   </a>    

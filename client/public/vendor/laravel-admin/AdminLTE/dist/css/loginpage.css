@@ -23,6 +23,7 @@
   font-size: 16px;
   margin: 4px 2px;
   cursor: pointer;
+  
 }
 
 .button1 {background-color: #008CBA;}
@@ -30,6 +31,7 @@
 .login{
 	
 	padding-left : 120px; 
+	font-weight:bold;
 }
 
 .login-head{
