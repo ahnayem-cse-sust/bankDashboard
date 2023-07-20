@@ -159,6 +159,7 @@ class Section extends Component {
                             {this.numberFormatter(((this.state.data?.DEPOSIT * 100) / 100)/(10000000))} <span className="crore">Crore</span>
                             </span>
                             </div>
+                            
                         </div>
                         )}
                            position="">
