@@ -326,7 +326,7 @@ class Section extends Component {
                   
 
                   <div className="info-box info-box-popup" onClick={this.handleNoAccPopUpCLose}>
-                          <span className="info-box-icon4 bg-info elevation-1"><i className="fa-solid fa-money-bill-1-wave blackiconcolor"></i></span>
+                          <span className="info-box-icon4 bg-info elevation-1"><i className="fa-solid fa-users-between-lines blackiconcolor"></i></span>
                           <div className="info-box-content">
                           <span className="info-box-text">number of account</span>
                           <span className="info-box-number">
