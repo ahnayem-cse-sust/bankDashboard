@@ -181,7 +181,7 @@ a:hover {
   .close-icon {
     content: 'x';
     cursor: pointer;
-    position: auto;
+    position: absolute;
     right: -2%;
     top: -4.7%;
     background: #ededed;
