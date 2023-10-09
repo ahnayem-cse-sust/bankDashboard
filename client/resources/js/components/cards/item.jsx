@@ -374,6 +374,7 @@ class Section extends Component {
                 <div className="col-12 col-sm-12 col-md-12">
                 </div>
                 <div className="col-12 col-sm-12 col-md-12">
+                <div className="line-text">From <span className="line-text-date">01/01/2023</span> to <span className="line-text-date">07/10/2023</span></div>
                 <div className="line"></div><br></br>
                 </div>
                 

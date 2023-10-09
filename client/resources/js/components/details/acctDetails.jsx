@@ -23,7 +23,7 @@ const AcctDetails = (props) => {
                     <div className="card-body">
                     <div className="col-12 col-sm-6 col-md-6">
                     <div className="info-box-card">                       
-                    <span className="popup-text">Deposit Account No.</span>
+                    <span className="popup-text">No. of Deposit Account</span>
                     </div>
                 </div>
                 <div className="col-12 col-sm-6 col-md-1">
@@ -37,7 +37,7 @@ const AcctDetails = (props) => {
                 
                 <div className="col-12 col-sm-6 col-md-6">
                     <div className="info-box-card">                       
-                    <span className="popup-text">Loan Account No.</span>
+                    <span className="popup-text">No. of Loan Account</span>
                     </div>
                 </div>
                 <div className="col-12 col-sm-6 col-md-1">
