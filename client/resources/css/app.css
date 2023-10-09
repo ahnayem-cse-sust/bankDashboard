@@ -80,3 +80,9 @@
     background: #d7d0f3;
     cursor: pointer;
   }
+
+  .line { 
+    border-bottom: 5px solid grey; 
+    margin-top: 5px; 
+    width: 100%; 
+} 

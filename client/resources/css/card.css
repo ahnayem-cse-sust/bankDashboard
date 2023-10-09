@@ -164,11 +164,24 @@ a:hover {
     border: 1px solid #999;
     overflow: none;
   }
+  .box-acct {
+    position: relative;
+    width: 40%;
+    margin: 0 auto;
+    height: auto;
+    min-height: 40%;
+    margin-top: calc(15vh - 20px);
+    background: #fff;
+    border-radius: 4px;
+    padding: 20px;
+    border: 1px solid #999;
+    overflow: none;
+  }
   
   .close-icon {
     content: 'x';
     cursor: pointer;
-    position: fixed;
+    position: auto;
     right: -2%;
     top: -4.7%;
     background: #ededed;

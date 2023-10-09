@@ -5,6 +5,7 @@ import Moment from "moment";
 import BranchInfo from '../infoItems/branchInfo';
 import DepositDetails from '../details/depositDetails';
 import LoanDetails from '../details/loanDetails';
+import AcctDetails from '../details/acctDetails';
 
 const baseURL = "http://172.17.0.37/dashboard/dashboard/";
 
@@ -120,6 +121,10 @@ class Section extends Component {
         this.setState({ isDepositOpen : !this.state.isDepositOpen });
     } 
 
+    handleNoAccPopUpCLose = () => {
+        this.setState({ isNoAccOpen : !this.state.isNoAccOpen });
+    } 
+
   render() {
 
     return (
@@ -129,6 +134,7 @@ class Section extends Component {
 
                 <BranchInfo selectedBranch={this.state.selected} />               
                 <br /> 
+                
                 
                 { this.state.loading && <div className="loader"></div>} 
                 { !this.state.loading && 
@@ -215,6 +221,23 @@ class Section extends Component {
 
                 
                 </div>
+                <div className="col-12 col-sm-6 col-md-3">
+                    <div className="info-box">
+
+                        <span className="info-box-icon6 bg-info elevation-1 box-color-daratio"><i className="fa-solid fa-percent blackiconcolor"></i></span>
+
+                        <div className="info-box-content">
+                            <span className="info-box-text">AD ratio</span>
+                            <span className="info-box-number">
+                            {/*(Math.round(this.state.data?.PROFIT * 100) / 100).toFixed(2)*/}
+
+                             {(this.state.data?.DA_RATIO)}                              
+
+                            {/* <small>%</small> */}
+                            </span>
+                        </div>
+                    </div>
+                </div>
             
            
                 <div className="col-12 col-sm-6 col-md-3">
@@ -235,7 +258,123 @@ class Section extends Component {
                             </span>
                         </div>
                     </div>
+                </div>  
+               
+                <div className="col-12 col-sm-6 col-md-3">
+                    <div className="info-box">
+
+                        <span className="info-box-icon6 bg-info elevation-1 box-color-loancl"><i className="fa-solid fa-landmark blackiconcolor"></i></span>
+
+                        <div className="info-box-content"> 
+
+                            <span className="info-box-text">cl loan ratio</span>
+                            <span className="info-box-number">
+
+                            {/*(Math.round(this.state.data?.PROFIT * 100) / 100).toFixed(2)*/}
+
+                             {(this.state.data?.LOAN_CL_RATIO)}
+                             
+
+                            {/* <small>%</small> */}
+                            </span>
+                        </div>
+                    </div>
                 </div>
+                <div className="col-12 col-sm-6 col-md-3">
+                    <div className="info-box">
+
+                        <span className="info-box-icon6 bg-info elevation-1 box-color-export"><i className="fas fa-file-export blackiconcolor"></i></span>
+
+                        <div className="info-box-content">
+
+                            <span className="info-box-text">export</span>
+                            <span className="info-box-number">
+
+                            {/*(Math.round(this.state.data?.PROFIT * 100) / 100).toFixed(2)*/}
+
+                             {this.numberFormatter(((this.state.data?.EXPORT * 100) / 100)/(10000000))} <span className="crore">Crore</span>
+                             
+
+                            {/* <small>%</small> */}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div className="col-12 col-sm-6 col-md-3">
+                    <div className="info-box">
+
+                        <span className="info-box-icon6 bg-info elevation-1 box-color-import"><i className="fas fa-file-import blackiconcolor"></i></span>
+
+                        <div className="info-box-content">
+                            <span className="info-box-text">import</span>
+                            <span className="info-box-number">
+
+                            {/*(Math.round(this.state.data?.PROFIT * 100) / 100).toFixed(2)*/}
+
+                             {this.numberFormatter(((this.state.data?.IMPORT * 100) / 100)/(10000000))} <span className="crore">Crore</span>
+                             
+
+                            {/* <small>%</small> */}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div className="col-12 col-sm-6 col-md-3 ">
+                  
+
+                  <div className="info-box info-box-popup" onClick={this.handleNoAccPopUpCLose}>
+                          <span className="info-box-icon4 bg-info elevation-1"><i className="fa-solid fa-money-bill-1-wave blackiconcolor"></i></span>
+                          <div className="info-box-content">
+                          <span className="info-box-text">number of account</span>
+                          <span className="info-box-number">
+                          {this.numberFormatter((((Math.round(this.state.data?.DEPOSIT_AC
+                         * 100) / 100)+(Math.round(this.state.data?.LOAN_AC
+                         * 100) / 100))))}
+                          </span>
+                          </div>
+                      </div>
+
+                  {this.state.isNoAccOpen && <AcctDetails
+                 deposit={this.state.data.DEPOSIT_AC}
+                 loan={this.state.data.LOAN_AC}
+                 acct={this.numberFormatter((((Math.round(this.state.data?.DEPOSIT_AC
+                    * 100) / 100)+(Math.round(this.state.data?.LOAN_AC
+                    * 100) / 100))))}
+                  content={<>
+                      <span className="close-icon" onClick={this.handleNoAccPopUpCLose}>x</span>
+                  </>}
+                  handleClose={this.handleNoAccPopUpCLose}
+                  />}
+
+              
+              </div>
+                     
+               {/*<div className="col-12 col-sm-6 col-md-3">
+                    <div className="info-box">
+                    
+                        <span className="info-box-icon7 bg-info elevation-1"><i className="fa fa-bar-chart blackiconcolor"></i></span>
+
+                        <div className="info-box-content">
+                            <span className="info-box-text">number of account
+                            </span>
+                            <span className="info-box-number">
+                         {this.numberFormatter((((Math.round(this.state.data?.DEPOSIT_AC
+                         * 100) / 100)+(Math.round(this.state.data?.LOAN_AC
+                         * 100) / 100))))}
+
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                         */}
+                
+                <div className="col-12 col-sm-12 col-md-12">
+                </div>
+                <div className="col-12 col-sm-12 col-md-12">
+                <div className="line"></div><br></br>
+                </div>
+                
+                
                  
                 <div className="col-12 col-sm-6 col-md-3">
                     <div className="info-box">
@@ -281,9 +420,7 @@ class Section extends Component {
 
                         <span className="info-box-icon6 bg-info elevation-1"><i className="fa-solid fa-money-bill-trend-up blackiconcolor"></i></span>
 
-                        <div className="info-box-content">
-           
-           
+                        <div className="info-box-content"> 
 
                             <span className="info-box-text">PROFIT/loss</span>
                             <span className="info-box-number">
@@ -298,123 +435,14 @@ class Section extends Component {
                         </div>
                     </div>
                 </div>
-                  
-                  <div className="col-12 col-sm-6 col-md-3">
-                    <div className="info-box">
-                    
-                        <span className="info-box-icon7 bg-info elevation-1"><i className="fa fa-bar-chart blackiconcolor"></i></span>
-
-                        <div className="info-box-content">
-                            <span className="info-box-text">number of account
-                            </span>
-                            <span className="info-box-number">
-                         {this.numberFormatter((((Math.round(this.state.data?.DEPOSIT_AC
-                         * 100) / 100)+(Math.round(this.state.data?.LOAN_AC
-                         * 100) / 100))))}
-
-                            </span>
-                        </div>
-                    </div>
-                </div>
+               
                 <div className="col-12 col-sm-6 col-md-3">
                     <div className="info-box">
-
-                        <span className="info-box-icon6 bg-info elevation-1 box-color-daratio"><i className="fa-solid fa-percent blackiconcolor"></i></span>
-
-                        <div className="info-box-content">
-           
-           
-
-                            <span className="info-box-text">AD ratio</span>
-                            <span className="info-box-number">
-
-                            {/*(Math.round(this.state.data?.PROFIT * 100) / 100).toFixed(2)*/}
-
-                             {(this.state.data?.DA_RATIO)}                              
-
-                            {/* <small>%</small> */}
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <div className="col-12 col-sm-6 col-md-3">
-                    <div className="info-box">
-
-                        <span className="info-box-icon6 bg-info elevation-1 box-color-loancl"><i className="fa-solid fa-landmark blackiconcolor"></i></span>
-
-                        <div className="info-box-content">
-           
-           
-
-                            <span className="info-box-text">cl loan ratio</span>
-                            <span className="info-box-number">
-
-                            {/*(Math.round(this.state.data?.PROFIT * 100) / 100).toFixed(2)*/}
-
-                             {(this.state.data?.LOAN_CL_RATIO)}
-                             
-
-                            {/* <small>%</small> */}
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <div className="col-12 col-sm-6 col-md-3">
-                    <div className="info-box">
-
-                        <span className="info-box-icon6 bg-info elevation-1 box-color-export"><i className="fas fa-file-export blackiconcolor"></i></span>
-
-                        <div className="info-box-content">
-           
-           
-
-                            <span className="info-box-text">export</span>
-                            <span className="info-box-number">
-
-                            {/*(Math.round(this.state.data?.PROFIT * 100) / 100).toFixed(2)*/}
-
-                             {this.numberFormatter(((this.state.data?.EXPORT * 100) / 100)/(10000000))} <span className="crore">Crore</span>
-                             
-
-                            {/* <small>%</small> */}
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <div className="col-12 col-sm-6 col-md-3">
-                    <div className="info-box">
-
-                        <span className="info-box-icon6 bg-info elevation-1 box-color-import"><i className="fas fa-file-import blackiconcolor"></i></span>
-
-                        <div className="info-box-content">
-           
-           
-
-                            <span className="info-box-text">import</span>
-                            <span className="info-box-number">
-
-                            {/*(Math.round(this.state.data?.PROFIT * 100) / 100).toFixed(2)*/}
-
-                             {this.numberFormatter(((this.state.data?.IMPORT * 100) / 100)/(10000000))} <span className="crore">Crore</span>
-                             
-
-                            {/* <small>%</small> */}
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <div className="col-12 col-sm-6 col-md-3">
-                    <div className="info-box">
-
                         <span className="info-box-icon6 bg-info elevation-1 box-color-fr-remitance"><i className="fas fa-sort-amount-up-alt blackiconcolor"></i></span>
 
-                        <div className="info-box-content">
-           
-           
-
+                        <div className="info-box-content"> 
                             <span className="info-box-text">foreign remittance</span>
                             <span className="info-box-number">
-
                             {/*(Math.round(this.state.data?.PROFIT * 100) / 100).toFixed(2)*/}
 
                              {this.numberFormatter(((this.state.data?.FR_REMITTANCE * 100) / 100)/(10000000))} <span className="crore">Crore</span>
@@ -427,7 +455,8 @@ class Section extends Component {
                 </div>
                 </div>
                  }
-            </div>      
+            </div> 
+                 
     );
   }
 }
