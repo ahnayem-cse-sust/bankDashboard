@@ -244,39 +244,25 @@ class Section extends Component {
                 <div className="col-12 col-sm-6 col-md-3">
                     <div className="info-box">
 
-                        <span className="info-box-icon6 bg-info elevation-1 box-color-daratio"><i className="fa-solid fa-percent blackiconcolor"></i></span>
+                        <span className="info-box-icon6 bg-info elevation-1 box-color-daratio"><i className="fa-solid fa-chart-line blackiconcolor"></i></span>
 
                         <div className="info-box-content">
-           
-           
-
-                            <span className="info-box-text">AD ratio</span>
+                            <span className="info-box-text">Classified Loan</span>
                             <span className="info-box-number">
-
-                            {/*(Math.round(this.state.data?.PROFIT * 100) / 100).toFixed(2)*/}
-
-                             {(this.state.data?.DA_RATIO)}                              
-
-                            {/* <small>%</small> */}
+                            {this.numberFormatter(((this.state.data?.CL_BALANCE * 100) / 100)/(10000000))} <span className="crore">Crore</span>
                             </span>
                         </div>
                     </div>
-                </div>  
+                </div>              
                
                 <div className="col-12 col-sm-6 col-md-3">
                     <div className="info-box">
-
                         <span className="info-box-icon6 bg-info elevation-1 box-color-loancl"><i className="fa-solid fa-landmark blackiconcolor"></i></span>
-
                         <div className="info-box-content"> 
-
                             <span className="info-box-text">cl loan ratio</span>
                             <span className="info-box-number">
-
                             {/*(Math.round(this.state.data?.PROFIT * 100) / 100).toFixed(2)*/}
-
-                             {(this.state.data?.LOAN_CL_RATIO)}
-                             
+                             {(this.state.data?.LOAN_CL_RATIO)}                           
 
                             {/* <small>%</small> */}
                             </span>
@@ -285,18 +271,12 @@ class Section extends Component {
                 </div>
                 <div className="col-12 col-sm-6 col-md-3">
                     <div className="info-box">
-
                         <span className="info-box-icon6 bg-info elevation-1 box-color-export"><i className="fas fa-file-export blackiconcolor"></i></span>
-
                         <div className="info-box-content">
-
                             <span className="info-box-text">export</span>
                             <span className="info-box-number">
-
                             {/*(Math.round(this.state.data?.PROFIT * 100) / 100).toFixed(2)*/}
-
-                             {this.numberFormatter(((this.state.data?.EXPORT * 100) / 100)/(10000000))} <span className="crore">Crore</span>
-                             
+                             {this.numberFormatter(((this.state.data?.EXPORT * 100) / 100)/(10000000))} <span className="crore">Crore</span>                          
 
                             {/* <small>%</small> */}
                             </span>
@@ -305,25 +285,20 @@ class Section extends Component {
                 </div>
                 <div className="col-12 col-sm-6 col-md-3">
                     <div className="info-box">
-
                         <span className="info-box-icon6 bg-info elevation-1 box-color-import"><i className="fas fa-file-import blackiconcolor"></i></span>
 
                         <div className="info-box-content">
                             <span className="info-box-text">import</span>
                             <span className="info-box-number">
-
                             {/*(Math.round(this.state.data?.PROFIT * 100) / 100).toFixed(2)*/}
-
-                             {this.numberFormatter(((this.state.data?.IMPORT * 100) / 100)/(10000000))} <span className="crore">Crore</span>
-                             
+                             {this.numberFormatter(((this.state.data?.IMPORT * 100) / 100)/(10000000))} <span className="crore">Crore</span>                            
 
                             {/* <small>%</small> */}
                             </span>
                         </div>
                     </div>
                 </div>
-                <div className="col-12 col-sm-6 col-md-3 ">
-                  
+                <div className="col-12 col-sm-6 col-md-3 ">               
 
                   <div className="info-box info-box-popup" onClick={this.handleNoAccPopUpCLose}>
                           <span className="info-box-icon4 bg-info elevation-1"><i className="fa-solid fa-users-between-lines blackiconcolor"></i></span>
@@ -374,11 +349,9 @@ class Section extends Component {
                 <div className="col-12 col-sm-12 col-md-12">
                 </div>
                 <div className="col-12 col-sm-12 col-md-12">
-                <div className="line-text">From <span className="line-text-date">01/01/2023</span> to <span className="line-text-date">07/10/2023</span></div>
+                <div className="line-text">From <span className="line-text-date">01/01/2023</span> to <span className="line-text-date">{this.state.selectDate}</span></div>
                 <div className="line"></div><br></br>
                 </div>
-                
-                
                  
                 <div className="col-12 col-sm-6 col-md-3">
                     <div className="info-box">
