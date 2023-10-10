@@ -244,7 +244,7 @@ class Section extends Component {
                 <div className="col-12 col-sm-6 col-md-3">
                     <div className="info-box">
 
-                        <span className="info-box-icon6 bg-info elevation-1 box-color-daratio"><i className="fa-solid fa-chart-line blackiconcolor"></i></span>
+                        <span className="info-box-icon6 bg-info elevation-1 box-color-cl"><i className="fa-solid fa-chart-line blackiconcolor"></i></span>
 
                         <div className="info-box-content">
                             <span className="info-box-text">Classified Loan</span>
