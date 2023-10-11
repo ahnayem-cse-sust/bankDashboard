@@ -37,7 +37,7 @@
 </head>
 <body class="hold-transition login-page" @if(config('admin.login_background_image'))style="background: url({{config('admin.login_background_image')}}) no-repeat;background-size: cover;"@endif>
 <div class="janataLogo-box">
-      <img src="{{ admin_asset("vendor/laravel-admin/AdminLTE/dist/img/loginLogo.png") }}" alt="Janata Bank Limited">
+      <img src="{{ admin_asset("vendor/laravel-admin/AdminLTE/dist/img/loginLogo.png") }}" alt="Janata Bank PLC.">
   </div>
 
 <div class="login-box">
@@ -57,7 +57,7 @@
 </div>
 <!-- /.login-box -->
 <div class="footer-logo">
-      <img src="{{ admin_asset("vendor/laravel-admin/AdminLTE/dist/img/graphical_line.png") }}" alt="Janata Bank Limited"> 
+      <img src="{{ admin_asset("vendor/laravel-admin/AdminLTE/dist/img/graphical_line.png") }}" alt="Janata Bank PLC."> 
   </div>
 
 

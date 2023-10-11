@@ -14,5 +14,5 @@
 
     </div>
     <!-- Default to the left -->
-    <strong>Powered by <a href="">Report Cell, Janata Bank Limited</a></strong>
+    <strong>Powered by <a href="">Report Cell, ICTD-Operation, Janata Bank PLC.</a></strong>
 </footer>

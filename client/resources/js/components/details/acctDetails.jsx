@@ -18,7 +18,7 @@ const AcctDetails = (props) => {
             <div className="box-acct animate__animated animate__fadeInDownBig">
                 <div className="card text-center">
                     <div className="card-header deposit-header">
-                       Number of Account: <span className="popupHeadnum">{props.acct} </span>
+                      Total Number of Account: <span className="popupHeadnum">{props.acct} </span>
                     </div>
                     <div className="card-body">
                     <div className="col-12 col-sm-6 col-md-6">

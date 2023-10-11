@@ -347,12 +347,15 @@ class Section extends Component {
                          */}
                 
                 <div className="col-12 col-sm-12 col-md-12">
-                </div>
+                </div><br></br>
+                
                 <div className="col-12 col-sm-12 col-md-12">
-                <div className="line-text">From <span className="line-text-date">01/01/2023</span> to <span className="line-text-date">{Moment(this.state.selectDate).format("D/M/Y")}</span></div>
-                <div className="line"></div><br></br>
+                
+                <div className="line"></div>
+                <div className="line-text">From <span className="line-text-date">01/01/2023</span> to <span className="line-text-date">{Moment(this.state.selectDate).format("D/M/Y")}</span></div><br></br>
                 </div>
-                 
+               
+                                
                 <div className="col-12 col-sm-6 col-md-3">
                     <div className="info-box">
 
